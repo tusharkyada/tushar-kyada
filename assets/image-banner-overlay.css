@@ -69,6 +69,33 @@
   bottom: 30px;
   right: 30px;
 }
+.heading {
+  font-size: var(--font-size);
+  margin-top: 0;
+  margin-bottom: 15px;
+  color: var(--color);
+}
+
+.description {
+  font-size: var(--font-size);
+  color: var(--color);
+  margin-bottom: 20px;
+}
+
+.button {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: var(--background-color);
+  color: var(--text-color);
+  text-decoration: none;
+  border-radius: var(--border-radius);
+  font-size: var(--font-size);
+  transition: background-color 0.3s ease;
+}
+
+.button:hover {
+  background-color: var(--hover-color);
+}
 @media screen and (max-width: 768px) {
   .image-with-text-overlay .desktop-image.has_mobile_image {
     display: none;
