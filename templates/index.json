@@ -12,7 +12,15 @@
     "image_banner_overlay_eRhXTN": {
       "type": "image-banner-overlay",
       "name": "Image with Text Overlay",
-      "settings": {}
+      "settings": {
+        "d-image": "shopify://shop_images/casual-fashion-woman_925x_56b56608-f207-45c1-b677-bb5aa26c1c7a.jpg",
+        "d-image-height": "medium",
+        "m-image-height": "medium",
+        "heading": "Heading",
+        "text": "",
+        "button-label": "",
+        "button-link": ""
+      }
     },
     "image_banner": {
       "type": "image-banner",
