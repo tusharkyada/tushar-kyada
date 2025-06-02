@@ -20,7 +20,14 @@
         "heading": "The Gift Guide",
         "text": "<p>Discover Joy: Your Ultimate Holiday Gift Destination. Explore our curated selection and find the perfect gifts to delight your loved ones this holiday season.</p>",
         "button-label": "Shop Now",
-        "button-link": ""
+        "button-link": "",
+        "enable_text_block_bg": true,
+        "block_bg_color": "rgb(255 255 255 / 25%)",
+        "text_position": "center-center",
+        "text_alignment": "center",
+        "text_width": 50,
+        "mobile_text_width": 90,
+        "mobile_text_position": "overlay"
       }
     },
     "image_banner": {
