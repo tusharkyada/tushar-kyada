@@ -14,9 +14,9 @@
       "name": "Image with Text Overlay",
       "settings": {
         "d-image": "shopify://shop_images/casual-fashion-woman_925x_56b56608-f207-45c1-b677-bb5aa26c1c7a.jpg",
-        "d-image-height": "medium",
+        "d-image-height": "60vh",
         "m-image": "shopify://shop_images/autumn-photographer-taking-picture_925x_1619bf60-7f6c-4f08-8201-9e5f62349789.jpg",
-        "m-image-height": "medium",
+        "m-image-height": "60vh",
         "heading": "The Gift Guide",
         "text": "<p>Discover Joy: Your Ultimate Holiday Gift Destination. Explore our curated selection and find the perfect gifts to delight your loved ones this holiday season.</p>",
         "button-label": "Shop Now",
