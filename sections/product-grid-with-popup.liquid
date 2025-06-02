@@ -1,0 +1,71 @@
+<link rel="stylesheet" href="{{ 'product-grid-with-popup.css' | asset_url }}">
+
+<section class="product-grid-container-{{ section.id }} page-width" {{ section.shopify_attributes }}>
+  {% if section.settings.heading != blank %}
+    <div class="product-grid-header">
+      <h2 class="section-title h2">{{ section.settings.heading }}</h2>
+    </div>
+  {% endif %}
+
+  <div class="product-grid">
+    {% for block in section.blocks %}
+      {% liquid
+        assign product = block.settings.product
+        assign current_product_index = forloop.index0
+      %}
+      <div class="product-item" data-product-index="{{ current_product_index }}">
+        <div class="product-image-wrapper">
+          {% if product != blank and product.featured_image %}
+            <img
+              src="{{ product.featured_image | image_url: width: 500 }}"
+              alt="{{ product.featured_image.alt | escape }}"
+              class="product-image-{{ section.id }}"
+              loading="lazy"
+              width="500"
+              height="500"
+            >
+          {% else %}
+            <div class="product-placeholder-{{ section.id }}">
+              {{ 'product-apparel-1' | placeholder_svg_tag }}
+            </div>
+          {% endif %}
+          <div
+            class="product-icon"
+            style="--X-position: {{ block.settings.x-position }}%; --Y-position: {{ block.settings.y-position }}%;"
+          >
+            <svg width="11" height="11" viewBox="0 0 11 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M5.3457 1.04175V9.50329" stroke="black" stroke-width="1.5" stroke-linecap="square" stroke-linejoin="round"/>
+              <path d="M1.11523 5.27246H9.57677" stroke="black" stroke-width="1.5" stroke-linecap="square" stroke-linejoin="round"/>
+            </svg>
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Product Grid with Popup",
+  "class": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "product_item",
+      "name": "Product",
+      "settings": [
+        { "type": "product", "id": "product", "label": "Select Product" },
+        { "type": "range", "id": "x-position", "label": "X Position", "default": 50, "step": 1, "min": 1, "max": 100 },
+        { "type": "range", "id": "y-position", "label": "Y Position", "default": 50, "step": 1, "min": 1, "max": 100 }
+      ]
+    }
+  ],
+  "presets": [{ "name": "Product Grid with Popup" }]
+}
+{% endschema %}
