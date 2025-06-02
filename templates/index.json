@@ -14,7 +14,7 @@
       "name": "Image with Text Overlay",
       "settings": {
         "d-image": "shopify://shop_images/Group_1000008197_1.png",
-        "d-image-height": "80vh",
+        "d-image-height": "100vh",
         "m-image": "shopify://shop_images/autumn-photographer-taking-picture_925x_1619bf60-7f6c-4f08-8201-9e5f62349789.jpg",
         "m-image-height": "60vh",
         "heading": "The Gift Guide",
