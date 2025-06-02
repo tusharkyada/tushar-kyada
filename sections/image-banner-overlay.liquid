@@ -35,7 +35,7 @@
     </div>
     <div
       class="image-with-text-overlay__content content-{{ section.settings.text_position }} content-mobile-{{ section.settings.mobile_text_position }}"
-      style="--text-width: {{ section.settings.text_width }}%; --mobile-text-width: {{ section.settings.mobile_text_width }}%; --text-alignment: {{ section.settings.text_alignment }};"
+      style="--text-width: {{ section.settings.text_width }}%; --mobile-text-width: {{ section.settings.mobile_text_width }}%; --text-alignment: {{ section.settings.text_alignment }};{% if section.settings.enable_text_block_bg %}--block-bg: {{section.settings.block_bg_color}};{% endif %}"
     >
       {% if section.settings.heading != blank %}
         <h2 class="image-with-text-overlay__heading">{{ section.settings.heading }}</h2>
@@ -155,6 +155,16 @@
     {
       "type": "header",
       "content": "Text Block Layout"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_text_block_bg",
+      "label": "Enable Text Block Background"
+    },
+    {
+      "type": "color_background",
+      "id": "block_bg_color",
+      "label": "Block Background Color"
     },
     {
       "type": "select",
