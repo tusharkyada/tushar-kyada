@@ -179,7 +179,7 @@
   .image-with-text-overlay .image-with-text-overlay__image {
     width: 100%;
   }
-  .image-with-text-overlay .image-with-text-overlay__button {
+  .image-with-text-overlay .image-with-text-overlay__content.content-mobile-upper .image-with-text-overlay__button {
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
@@ -190,5 +190,8 @@
   }
   .image-with-text-overlay .image-with-text-overlay__content .image-with-text-overlay__text {
     margin-bottom: 0px;
+  }
+  .image-with-text-overlay .bottom-text-wrapper {
+    font-size: 14px;
   }
 }
