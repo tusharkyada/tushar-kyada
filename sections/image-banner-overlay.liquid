@@ -94,7 +94,7 @@
           {{ section.settings.text }}
         </div>
       {% endif %}
-      {% if section.settings['button-link'] != blank %}
+      {% if section.settings['button-label'] != blank %}
         <div class="image-with-text-overlay__button">
           <a
             href="{% if section.settings.button-link != blank %}{{ section.settings.button-link }}{% else %}javascript:void(0);{% endif %}"
