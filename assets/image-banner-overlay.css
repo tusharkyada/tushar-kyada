@@ -80,6 +80,8 @@
   font-size: var(--font-size);
   color: var(--color);
   margin-bottom: 20px;
+  letter-spacing: normal;
+  line-height: normal;
 }
 
 .image-with-text-overlay .image-with-text-overlay__content .btn {
@@ -91,6 +93,19 @@
   border-radius: var(--border-radius);
   font-size: var(--font-size);
   transition: background-color 0.3s ease;
+  max-width: 220px;
+  width: 100%;
+  text-align: center;
+  position: relative;
+  padding-right: 60px;
+}
+
+.image-with-text-overlay .image-with-text-overlay__content .btn svg {
+  position: absolute;
+  top: 50%;
+  right: 20px;
+  display: block;
+  transform: translateY(-50%);
 }
 
 .image-with-text-overlay .image-with-text-overlay__content .btn:hover {
