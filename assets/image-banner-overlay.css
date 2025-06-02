@@ -168,6 +168,12 @@
 .image-with-text-overlay .top-bar-content.active .close_btn {
   display: block;
 }
+.image-with-text-overlay .image-with-text-overlay__content_wrapper {
+  position: relative;
+  max-width: 1360px;
+  padding: 0 15px;
+  margin: 0 auto;
+}
 @media screen and (max-width: 1280px) {
   .image-with-text-overlay .image-with-text-overlay__content .image-with-text-overlay__heading,
   .image-with-text-overlay .image-with-text-overlay__content .image-with-text-overlay__text {

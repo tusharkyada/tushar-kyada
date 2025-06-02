@@ -123,40 +123,42 @@
         </div>
       {% endif %}
     </div>
-    <div
-      class="image-with-text-overlay__content content-{{ section.settings.text_position }} content-mobile-{{ section.settings.mobile_text_position }}"
-      style="--text-width: {{ section.settings.text_width }}px; --block-radius: {{ section.settings.overlay_border_radius }}px; --text-alignment: {{ section.settings.text_alignment }};{% if section.settings.enable_text_block_bg %}--block-bg: {{section.settings.block_bg_color}};{% endif %}"
-    >
-      {% if section.settings.heading != blank %}
-        <h2
-          class="image-with-text-overlay__heading"
-          style="--color: {{ section.settings.heading_color }}; --font-size: {{ section.settings.heading_size }}px;--mobile-font-size: {{ section.settings.mobile_heading_size }}px;"
-        >
-          {{ section.settings.heading }}
-        </h2>
-      {% endif %}
-      {% if section.settings.text != blank %}
-        <div
-          class="image-with-text-overlay__text"
-          style="--color: {{ section.settings.text_color }}; --font-size: {{ section.settings.text_size }}px;--mobile-font-size: {{ section.settings.mobile_text_size }}px;"
-        >
-          {{ section.settings.text }}
-        </div>
-      {% endif %}
-      {% if section.settings['button-label'] != blank %}
-        <div class="image-with-text-overlay__button">
-          <a
-            href="{% if section.settings.button-link != blank %}{{ section.settings.button-link }}{% else %}javascript:void(0);{% endif %}"
-            class="btn"
-            style="--background-color: {{ section.settings.button_color }}; --text-color: {{ section.settings.button_text_color }}; --font-size: {{ section.settings.button_text_size }}px;"
+    <div class="image-with-text-overlay__content_wrapper">
+      <div
+        class="image-with-text-overlay__content content-{{ section.settings.text_position }} content-mobile-{{ section.settings.mobile_text_position }}"
+        style="--text-width: {{ section.settings.text_width }}px; --block-radius: {{ section.settings.overlay_border_radius }}px; --text-alignment: {{ section.settings.text_alignment }};{% if section.settings.enable_text_block_bg %}--block-bg: {{section.settings.block_bg_color}};{% endif %}"
+      >
+        {% if section.settings.heading != blank %}
+          <h2
+            class="image-with-text-overlay__heading"
+            style="--color: {{ section.settings.heading_color }}; --font-size: {{ section.settings.heading_size }}px;--mobile-font-size: {{ section.settings.mobile_heading_size }}px;"
           >
-            {{ section.settings['button-label'] }}
-            <svg width="28" height="13" viewBox="0 0 28 13" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M1.11108 5.74402L0.361084 5.74402L0.361084 7.24402L1.11108 7.24402L1.11108 5.74402ZM27.1487 7.02435C27.4416 6.73146 27.4416 6.25658 27.1487 5.96369L22.3757 1.19072C22.0828 0.897826 21.6079 0.897826 21.315 1.19072C21.0221 1.48361 21.0221 1.95849 21.315 2.25138L25.5577 6.49402L21.315 10.7367C21.0221 11.0296 21.0221 11.5044 21.315 11.7973C21.6079 12.0902 22.0828 12.0902 22.3757 11.7973L27.1487 7.02435ZM1.11108 7.24402L26.6183 7.24402L26.6183 5.74402L1.11108 5.74402L1.11108 7.24402Z" fill="{{ section.settings.button_text_color }}"/>
-            </svg>
-          </a>
-        </div>
-      {% endif %}
+            {{ section.settings.heading }}
+          </h2>
+        {% endif %}
+        {% if section.settings.text != blank %}
+          <div
+            class="image-with-text-overlay__text"
+            style="--color: {{ section.settings.text_color }}; --font-size: {{ section.settings.text_size }}px;--mobile-font-size: {{ section.settings.mobile_text_size }}px;"
+          >
+            {{ section.settings.text }}
+          </div>
+        {% endif %}
+        {% if section.settings['button-label'] != blank %}
+          <div class="image-with-text-overlay__button">
+            <a
+              href="{% if section.settings.button-link != blank %}{{ section.settings.button-link }}{% else %}javascript:void(0);{% endif %}"
+              class="btn"
+              style="--background-color: {{ section.settings.button_color }}; --text-color: {{ section.settings.button_text_color }}; --font-size: {{ section.settings.button_text_size }}px;"
+            >
+              {{ section.settings['button-label'] }}
+              <svg width="28" height="13" viewBox="0 0 28 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M1.11108 5.74402L0.361084 5.74402L0.361084 7.24402L1.11108 7.24402L1.11108 5.74402ZM27.1487 7.02435C27.4416 6.73146 27.4416 6.25658 27.1487 5.96369L22.3757 1.19072C22.0828 0.897826 21.6079 0.897826 21.315 1.19072C21.0221 1.48361 21.0221 1.95849 21.315 2.25138L25.5577 6.49402L21.315 10.7367C21.0221 11.0296 21.0221 11.5044 21.315 11.7973C21.6079 12.0902 22.0828 12.0902 22.3757 11.7973L27.1487 7.02435ZM1.11108 7.24402L26.6183 7.24402L26.6183 5.74402L1.11108 5.74402L1.11108 7.24402Z" fill="{{ section.settings.button_text_color }}"/>
+              </svg>
+            </a>
+          </div>
+        {% endif %}
+      </div>
     </div>
   </div>
   {% if section.settings.bottom_text != blank %}
