@@ -8,7 +8,7 @@
   height: auto;
   display: block;
 }
-.top-bar-content {
+.image-with-text-overlay .top-bar-content {
   display: flex;
   align-items: center;
   flex-wrap: wrap;
@@ -18,10 +18,15 @@
   max-width: 1370px;
   margin: 0 auto;
 }
-.top-bar-content .top-bar-logo {
+.image-with-text-overlay .top-bar-content .top-bar-logo {
   max-width: 150px;
   width: 100%;
   line-height: 0;
+}
+.image-with-text-overlay .bottom-text-wrapper {
+  padding: 10px;
+  text-align: center;
+  line-height: normal;
 }
 
 .image-with-text-overlay .mobile-image {
