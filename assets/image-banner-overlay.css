@@ -140,6 +140,10 @@
   }
 }
 @media screen and (max-width: 768px) {
+  .image-with-text-overlay .top-bar__button,
+  .image-with-text-overlay .top-bar-text {
+    display: none;
+  }
   .image-with-text-overlay .desktop-image.has_mobile_image {
     display: none;
   }
@@ -156,5 +160,21 @@
     padding-left: 15px;
     padding-right: 15px;
     text-align: center;
+  }
+  .image-with-text-overlay .image-with-text-overlay__container {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+  }
+  .image-with-text-overlay .image-with-text-overlay__content.content-mobile-upper {
+    max-width: 100%;
+    padding-left: 15px;
+    padding-right: 15px;
+    text-align: center;
+    position: static;
+    order: -1;
+  }
+  .image-with-text-overlay .image-with-text-overlay__image {
+    width: 100%;
   }
 }
