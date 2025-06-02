@@ -114,7 +114,7 @@
   color: var(--text-color);
   text-decoration: none;
   font-size: var(--font-size);
-  transition: background-color 0.3s ease;
+  transition: 0.3s ease;
   max-width: 220px;
   width: 100%;
   text-align: center;
@@ -130,6 +130,9 @@
   transform: translateY(-50%);
 }
 
+.image-with-text-overlay .btn:hover {
+  box-shadow: 0px 2px 4px 0px #00000033;
+}
 @media screen and (max-width: 768px) {
   .image-with-text-overlay .desktop-image.has_mobile_image {
     display: none;
