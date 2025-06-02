@@ -173,8 +173,22 @@
     text-align: center;
     position: static;
     order: -1;
+    padding-top: 49px;
+    padding-bottom: 10px;
   }
   .image-with-text-overlay .image-with-text-overlay__image {
     width: 100%;
+  }
+  .image-with-text-overlay .image-with-text-overlay__button {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 40px;
+  }
+  .image-with-text-overlay .image-with-text-overlay__text p {
+    margin: 0;
+  }
+  .image-with-text-overlay .image-with-text-overlay__content .image-with-text-overlay__text {
+    margin-bottom: 0px;
   }
 }
