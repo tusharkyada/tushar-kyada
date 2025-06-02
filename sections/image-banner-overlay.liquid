@@ -35,13 +35,21 @@
     </div>
     <div
       class="image-with-text-overlay__content content-{{ section.settings.text_position }} content-mobile-{{ section.settings.mobile_text_position }}"
-      style="--text-width: {{ section.settings.text_width }}px; --text-alignment: {{ section.settings.text_alignment }};{% if section.settings.enable_text_block_bg %}--block-bg: {{section.settings.block_bg_color}};{% endif %}"
+      style="--text-width: {{ section.settings.text_width }}px; --block-radius: {{ section.settings.overlay_border_radius }}px; --text-alignment: {{ section.settings.text_alignment }};{% if section.settings.enable_text_block_bg %}--block-bg: {{section.settings.block_bg_color}};{% endif %}"
     >
       {% if section.settings.heading != blank %}
-        <h2 class="image-with-text-overlay__heading">{{ section.settings.heading }}</h2>
+        <h2
+          class="image-with-text-overlay__heading"
+          style="--color: {{ section.settings.heading_color }}; --font-size: {{ section.settings.heading_size }};--mobile-font-size: {{ section.settings.mobile_heading_size }};"
+        >
+          {{ section.settings.heading }}
+        </h2>
       {% endif %}
       {% if section.settings.text != blank %}
-        <div class="image-with-text-overlay__text">
+        <div
+          class="image-with-text-overlay__text"
+          style="--color: {{ section.settings.text_color }}; --font-size: {{ section.settings.text_size }};--mobile-font-size: {{ section.settings.mobile_text_size }};"
+        >
           {{ section.settings.text }}
         </div>
       {% endif %}
@@ -50,6 +58,7 @@
           <a
             href="{% if section.settings.button-link != blank %}{{ section.settings.button-link }}{% else %}javascript:void(0);{% endif %}"
             class="btn"
+            style="--background-color: {{ section.settings.button_color }}; --text-color: {{ section.settings.button_text_color }}; --hover-color: {{ section.settings.button_hover_color }}; --border-radius: {{ section.settings.button_border_radius }}px; --font-size: {{ section.settings.button_text_size }};"
           >
             {{ section.settings['button-label'] }}
           </a>
@@ -157,16 +166,6 @@
       "content": "Text Block Layout"
     },
     {
-      "type": "checkbox",
-      "id": "enable_text_block_bg",
-      "label": "Enable Text Block Background"
-    },
-    {
-      "type": "color_background",
-      "id": "block_bg_color",
-      "label": "Block Background Color"
-    },
-    {
       "type": "select",
       "id": "text_position",
       "label": "Text Position (Desktop)",
@@ -256,6 +255,128 @@
       ],
       "default": "overlay",
       "info": "Choose whether text overlays the image or appears below it on mobile."
+    },
+    {
+      "type": "header",
+      "content": "Typography"
+    },
+    {
+      "type": "range",
+      "id": "heading_size",
+      "min": 16,
+      "max": 72,
+      "step": 2,
+      "unit": "px",
+      "label": "Heading Size (Desktop)",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "mobile_heading_size",
+      "min": 16,
+      "max": 48,
+      "step": 2,
+      "unit": "px",
+      "label": "Heading Size (Mobile)",
+      "default": 28
+    },
+    {
+      "type": "range",
+      "id": "text_size",
+      "min": 12,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "label": "Description Text Size (Desktop)",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "mobile_text_size",
+      "min": 12,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "label": "Description Text Size (Mobile)",
+      "default": 14
+    },
+    {
+      "type": "header",
+      "content": "Colors & Styling"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_text_block_bg",
+      "label": "Enable Text Block Background"
+    },
+    {
+      "type": "color_background",
+      "id": "block_bg_color",
+      "label": "Block Background Color"
+    },
+    {
+      "type": "range",
+      "id": "overlay_border_radius",
+      "min": 0,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "label": "Overlay Border Radius",
+      "default": 0
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading Color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text Color",
+      "default": "#333333"
+    },
+    {
+      "type": "header",
+      "content": "Button Styling"
+    },
+    {
+      "type": "color",
+      "id": "button_color",
+      "label": "Button Background Color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "button_text_color",
+      "label": "Button Text Color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "button_hover_color",
+      "label": "Button Hover Color",
+      "default": "#333333"
+    },
+    {
+      "type": "range",
+      "id": "button_border_radius",
+      "min": 0,
+      "max": 40,
+      "step": 1,
+      "unit": "px",
+      "label": "Button Border Radius",
+      "default": 4
+    },
+    {
+      "type": "range",
+      "id": "button_text_size",
+      "min": 12,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "label": "Button Text Size",
+      "default": 14
     }
   ],
   "presets": [

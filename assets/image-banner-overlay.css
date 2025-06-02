@@ -26,6 +26,7 @@
   text-align: var(--text-alignment);
   z-index: 2;
   background: var(--block-bg);
+  border-radius: var(--block-radius);
 }
 .image-with-text-overlay .image-with-text-overlay__content.content-top-left {
   top: 30px;
