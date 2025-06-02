@@ -2,7 +2,54 @@
 
 <section class="image-with-text-overlay" {{ section.shopify_attributes }}>
   <div class="image-with-text-overlay__container">
-    <div class="image-with-text-overlay__image"></div>
+    <div class="image-with-text-overlay__image">
+      {%- if section.settings['d-image'] != blank -%}
+        <div class="desktop-image">
+          {%- capture sizes -%}
+                    (min-width: {{ settings.page_width }}px) {{ settings.page_width | minus: 100 | divided_by: 2 }}px,
+                    (min-width: 750px) calc((100vw - 130px) / 2), calc((100vw - 50px) / 2)
+                {%- endcapture -%}
+          {{
+            section.settings['d-image']
+            | image_url: width: 1500
+            | image_tag: sizes: sizes, widths: '165, 360, 535, 750, 1070, 1500'
+          }}
+        </div>
+      {% endif %}
+      {%- if section.settings['m-image'] != blank and section.settings['d-image'] != blank -%}
+        <div class="mobile-image">
+          {%- capture sizes -%}
+                    (min-width: {{ settings.page_width }}px) {{ settings.page_width | minus: 100 | divided_by: 2 }}px,
+                    (min-width: 750px) calc((100vw - 130px) / 2), calc((100vw - 50px) / 2)
+                {%- endcapture -%}
+          {{
+            section.settings['m-image']
+            | image_url: width: 1500
+            | image_tag: sizes: sizes, widths: '165, 360, 535, 750, 1070, 1500'
+          }}
+        </div>
+      {% endif %}
+    </div>
+    <div class="image-with-text-overlay__content">
+      {% if section.settings.heading != blank %}
+        <h2 class="image-with-text-overlay__heading">{{ section.settings.heading }}</h2>
+      {% endif %}
+      {% if section.settings.text != blank %}
+        <div class="image-with-text-overlay__text">
+          {{ section.settings.text }}
+        </div>
+      {% endif %}
+      {% if section.settings.text != blank %}
+        <div class="image-with-text-overlay__button">
+          <a
+            href="{% if section.settings.button-link != blank %}{{ section.settings.button-link }}{% else %}javascript:void(0);{% endif %}"
+            class="btn"
+          >
+            {{ section.settings['button-label'] }}
+          </a>
+        </div>
+      {% endif %}
+    </div>
   </div>
 </section>
 
@@ -11,7 +58,48 @@
   "name": "Image with Text Overlay",
   "tag": "section",
   "class": "section",
-  "settings": [],
+  "settings": [
+    {
+      "type": "header",
+      "content": "Images"
+    },
+    {
+      "type": "image_picker",
+      "id": "d-image",
+      "label": "Desktop Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "m-image",
+      "label": "Mobile Image"
+    },
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Heading"
+    },
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "Text",
+      "default": "Add your text here."
+    },
+    {
+      "type": "text",
+      "id": "button-label",
+      "label": "button Label"
+    },
+    {
+      "type": "url",
+      "id": "button-link",
+      "label": "button Link"
+    }
+  ],
   "presets": [
     {
       "name": "Image with Text Overlay",
