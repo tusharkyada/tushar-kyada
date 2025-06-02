@@ -55,36 +55,84 @@
         "product_item_rbPLCA": {
           "type": "product_item",
           "settings": {
-            "product": "",
-            "x-position": 50,
-            "y-position": 50
+            "product": "black-leather-bag",
+            "x-position": 59,
+            "y-position": 59
           }
         },
         "product_item_m4TPd6": {
           "type": "product_item",
           "settings": {
-            "product": "",
-            "x-position": 50,
-            "y-position": 50
+            "product": "blue-silk-tuxedo",
+            "x-position": 53,
+            "y-position": 83
           }
         },
         "product_item_kifiUV": {
           "type": "product_item",
           "settings": {
-            "product": "",
-            "x-position": 50,
+            "product": "chequered-red-shirt",
+            "x-position": 25,
+            "y-position": 64
+          }
+        },
+        "product_item_BA6a4B": {
+          "type": "product_item",
+          "settings": {
+            "product": "classic-leather-jacket",
+            "x-position": 20,
+            "y-position": 69
+          }
+        },
+        "product_item_JzUeYN": {
+          "type": "product_item",
+          "settings": {
+            "product": "classic-varsity-top",
+            "x-position": 28,
             "y-position": 50
+          }
+        },
+        "product_item_AMUkwm": {
+          "type": "product_item",
+          "settings": {
+            "product": "dark-denim-top",
+            "x-position": 47,
+            "y-position": 76
+          }
+        },
+        "product_item_FPqDJa": {
+          "type": "product_item",
+          "settings": {
+            "product": "floral-white-top",
+            "x-position": 70,
+            "y-position": 28
+          }
+        },
+        "product_item_pUAXYm": {
+          "type": "product_item",
+          "settings": {
+            "product": "led-high-tops",
+            "x-position": 60,
+            "y-position": 66
           }
         }
       },
       "block_order": [
         "product_item_rbPLCA",
         "product_item_m4TPd6",
-        "product_item_kifiUV"
+        "product_item_kifiUV",
+        "product_item_BA6a4B",
+        "product_item_JzUeYN",
+        "product_item_AMUkwm",
+        "product_item_FPqDJa",
+        "product_item_pUAXYm"
       ],
       "name": "Product Grid with Popup",
       "settings": {
-        "heading": "Tisso vison in the wild"
+        "heading": "Tisso vison in the wild",
+        "columns_mobile": "2",
+        "section-padding-top": 40,
+        "section-padding-bottom": 40
       }
     }
   },
