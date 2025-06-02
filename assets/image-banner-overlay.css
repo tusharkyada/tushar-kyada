@@ -133,11 +133,28 @@
 .image-with-text-overlay .btn:hover {
   box-shadow: 0px 2px 4px 0px #00000033;
 }
+@media screen and (max-width: 1280px) {
+  .image-with-text-overlay .image-with-text-overlay__content .image-with-text-overlay__heading,
+  .image-with-text-overlay .image-with-text-overlay__content .image-with-text-overlay__text {
+    margin-bottom: 20px;
+  }
+}
 @media screen and (max-width: 768px) {
   .image-with-text-overlay .desktop-image.has_mobile_image {
     display: none;
   }
   .image-with-text-overlay .mobile-image {
     display: block;
+  }
+  .image-with-text-overlay .image-with-text-overlay__content .image-with-text-overlay__heading,
+  .image-with-text-overlay .image-with-text-overlay__content .image-with-text-overlay__text {
+    font-size: var(--font-size);
+  }
+  .image-with-text-overlay .image-with-text-overlay__content.content-mobile-below {
+    position: static;
+    max-width: 100%;
+    padding-left: 15px;
+    padding-right: 15px;
+    text-align: center;
   }
 }
