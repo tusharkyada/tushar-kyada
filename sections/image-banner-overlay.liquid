@@ -110,6 +110,14 @@
       {% endif %}
     </div>
   </div>
+  {% if section.settings.bottom_text != blank %}
+    <div
+      class="bottom-text-wrapper"
+      style="color: {{ section.settings.bootm_text_color }}; background-color: {{ section.settings.bottom_text_bg_color }};"
+    >
+      {{ section.settings.bottom_text }}
+    </div>
+  {% endif %}
 </section>
 
 {% schema %}
@@ -461,6 +469,25 @@
       "unit": "px",
       "label": "Button Text Size",
       "default": 14
+    },
+    {
+      "type": "header",
+      "content": "Bottom Text"
+    },
+    {
+      "type": "text",
+      "id": "bottom_text",
+      "label": "Bottom Text"
+    },
+    {
+      "type": "color",
+      "id": "bootm_text_color",
+      "label": "Bottom Text Color"
+    },
+    {
+      "type": "color",
+      "id": "bottom_text_bg_color",
+      "label": "Bottom Text Background Color"
     }
   ],
   "presets": [

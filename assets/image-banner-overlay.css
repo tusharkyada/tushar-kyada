@@ -3,11 +3,27 @@
   width: 100%;
   overflow: hidden;
 }
-.image-with-text-overlay__image img {
+.image-with-text-overlay img {
   width: 100%;
   height: auto;
   display: block;
 }
+.top-bar-content {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  grid-gap: 20px;
+  padding: 10px 15px;
+  max-width: 1370px;
+  margin: 0 auto;
+}
+.top-bar-content .top-bar-logo {
+  max-width: 150px;
+  width: 100%;
+  line-height: 0;
+}
+
 .image-with-text-overlay .mobile-image {
   display: none;
 }
