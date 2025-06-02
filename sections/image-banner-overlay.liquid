@@ -151,6 +151,14 @@
   {% endif %}
 </section>
 
+<script>
+  document.querySelector('.top-bar-wrapper .mobile_menu')?.addEventListener('click', function () {
+    this.closest('.top-bar-content').classList.toggle('active');
+    document.querySelector('.top-bar-wrapper .mobile_content').classList.toggle('active');
+    document.body.classList.toggle('overflow-hidden');
+  });
+</script>
+
 {% schema %}
 {
   "name": "Image with Text Overlay",
