@@ -32,7 +32,7 @@
         "text_position": "bottom-left",
         "text_alignment": "left",
         "text_width": 500,
-        "mobile_text_position": "below",
+        "mobile_text_position": "upper",
         "heading_size": 70,
         "mobile_heading_size": 30,
         "text_size": 20,
