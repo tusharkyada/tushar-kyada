@@ -1,6 +1,47 @@
 <link rel="stylesheet" href="{{ 'image-banner-overlay.css' | asset_url }}">
 
 <section class="image-with-text-overlay" {{ section.shopify_attributes }}>
+  {% if section.settings.top_bar_logo != blank
+    or section.settings.top_bar_text != blank
+    or section.settings.top_bar_button_label != blank
+  %}
+    <div class="top-bar-wrapper" style="background-color: {{ section.settings.top_bar_color }};">
+      <div class="top-bar-content">
+        {% if section.settings.top_bar_logo != blank %}
+          <div class="top-bar-logo">
+            {%- capture sizes -%}
+                (min-width: {{ settings.page_width }}px) {{ settings.page_width | minus: 100 | divided_by: 2 }}px,
+                (min-width: 750px) calc((100vw - 130px) / 2), calc((100vw - 50px) / 2)
+            {%- endcapture -%}
+            {{
+              section.settings.top_bar_logo
+              | image_url: width: 1500
+              | image_tag: sizes: sizes, widths: '165, 360, 535, 750, 1070, 1500'
+            }}
+          </div>
+        {% endif %}
+        {% if section.settings.top_bar_text != blank %}
+          <div class="top-bar-text" style="color: {{ section.settings.top_bar_text_color }};">
+            {{ section.settings.top_bar_text }}
+          </div>
+        {% endif %}
+        {% if section.settings.top_bar_button_label != blank %}
+          <div class="top-bar__button">
+            <a
+              href="{% if section.settings.top_bar_button_link != blank %}{{ section.settings.top_bar_button_link }}{% else %}javascript:void(0);{% endif %}"
+              class="btn"
+              style="--background-color: {{ section.settings.top_button_color }}; --text-color: {{ section.settings.top_button_text_color }}; --font-size: {{ section.settings.button_text_size }}px;"
+            >
+              {{ section.settings.top_bar_button_label }}
+              <svg width="28" height="13" viewBox="0 0 28 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M1.11108 5.74402L0.361084 5.74402L0.361084 7.24402L1.11108 7.24402L1.11108 5.74402ZM27.1487 7.02435C27.4416 6.73146 27.4416 6.25658 27.1487 5.96369L22.3757 1.19072C22.0828 0.897826 21.6079 0.897826 21.315 1.19072C21.0221 1.48361 21.0221 1.95849 21.315 2.25138L25.5577 6.49402L21.315 10.7367C21.0221 11.0296 21.0221 11.5044 21.315 11.7973C21.6079 12.0902 22.0828 12.0902 22.3757 11.7973L27.1487 7.02435ZM1.11108 7.24402L26.6183 7.24402L26.6183 5.74402L1.11108 5.74402L1.11108 7.24402Z" fill="{{ section.settings.top_button_text_color }}"/>
+              </svg>
+            </a>
+          </div>
+        {% endif %}
+      </div>
+    </div>
+  {% endif %}
   <div class="image-with-text-overlay__container">
     <div class="image-with-text-overlay__image">
       {%- if section.settings['d-image'] != blank -%}
@@ -53,12 +94,12 @@
           {{ section.settings.text }}
         </div>
       {% endif %}
-      {% if section.settings.text != blank %}
+      {% if section.settings['button-link'] != blank %}
         <div class="image-with-text-overlay__button">
           <a
             href="{% if section.settings.button-link != blank %}{{ section.settings.button-link }}{% else %}javascript:void(0);{% endif %}"
             class="btn"
-            style="--background-color: {{ section.settings.button_color }}; --text-color: {{ section.settings.button_text_color }}; --hover-color: {{ section.settings.button_hover_color }}; --border-radius: {{ section.settings.button_border_radius }}px; --font-size: {{ section.settings.button_text_size }}px;"
+            style="--background-color: {{ section.settings.button_color }}; --text-color: {{ section.settings.button_text_color }}; --font-size: {{ section.settings.button_text_size }}px;"
           >
             {{ section.settings['button-label'] }}
             <svg width="28" height="13" viewBox="0 0 28 13" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -77,6 +118,52 @@
   "tag": "section",
   "class": "section",
   "settings": [
+    {
+      "type": "header",
+      "content": "Top Bar Settings"
+    },
+    {
+      "type": "text",
+      "id": "top_bar_logo",
+      "label": "Top Bar Logo"
+    },
+    {
+      "type": "text",
+      "id": "top_bar_text",
+      "label": "Top Bar Text"
+    },
+    {
+      "type": "text",
+      "id": "top_bar_button_label",
+      "label": "Top Bar Button Label"
+    },
+    {
+      "type": "url",
+      "id": "top_bar_button_link",
+      "label": "Top Bar Button Link"
+    },
+    {
+      "type": "color",
+      "id": "top_bar_color",
+      "label": "Top Bar Background Color"
+    },
+    {
+      "type": "color",
+      "id": "top_button_color",
+      "label": "Top BarButton Background Color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "top_button_text_color",
+      "label": "Top Bar Button Text Color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "top_bar_text_color",
+      "label": "Top Bar Text Color"
+    },
     {
       "type": "header",
       "content": "Images"
@@ -354,12 +441,6 @@
       "id": "button_text_color",
       "label": "Button Text Color",
       "default": "#FFFFFF"
-    },
-    {
-      "type": "color",
-      "id": "button_hover_color",
-      "label": "Button Hover Color",
-      "default": "#333333"
     },
     {
       "type": "range",
