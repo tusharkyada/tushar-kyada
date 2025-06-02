@@ -148,7 +148,7 @@
   }
   .image-with-text-overlay .image-with-text-overlay__content .image-with-text-overlay__heading,
   .image-with-text-overlay .image-with-text-overlay__content .image-with-text-overlay__text {
-    font-size: var(--font-size);
+    font-size: var(--mobile-font-size);
   }
   .image-with-text-overlay .image-with-text-overlay__content.content-mobile-below {
     position: static;
