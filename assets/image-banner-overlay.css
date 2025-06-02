@@ -133,16 +133,36 @@
 .image-with-text-overlay .btn:hover {
   box-shadow: 0px 2px 4px 0px #00000033;
 }
+.image-with-text-overlay .top-bar-wrapper .mobile_content {
+  padding: 25px;
+  text-align: center;
+  display: none;
+}
 @media screen and (max-width: 1280px) {
   .image-with-text-overlay .image-with-text-overlay__content .image-with-text-overlay__heading,
   .image-with-text-overlay .image-with-text-overlay__content .image-with-text-overlay__text {
     margin-bottom: 20px;
   }
 }
+.top-bar-wrapper .mobile_menu {
+  display: none;
+}
 @media screen and (max-width: 768px) {
-  .image-with-text-overlay .top-bar__button,
-  .image-with-text-overlay .top-bar-text {
+  .top-bar-wrapper .mobile_menu {
+    cursor: pointer;
+    display: block;
+  }
+  .image-with-text-overlay .top-bar-content .top-bar__button,
+  .image-with-text-overlay .top-bar-content .top-bar-text {
     display: none;
+  }
+  .image-with-text-overlay .top-bar-content {
+    display: grid;
+    grid-template-columns: 18px 1fr 18px;
+    padding-block: 20px;
+  }
+  .image-with-text-overlay .top-bar-content .top-bar-logo {
+    margin: 0 auto;
   }
   .image-with-text-overlay .desktop-image.has_mobile_image {
     display: none;
