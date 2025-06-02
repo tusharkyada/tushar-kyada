@@ -49,24 +49,23 @@
           class="desktop-image{%- if section.settings['m-image'] != blank %} has_mobile_image{% endif %}"
           style="--image-height: {{ section.settings['d-image-height'] }};"
         >
-          {%- if section.settings['d-image'] != blank -%}
-            {%- capture sizes -%}
+          {%- capture sizes -%}
               (min-width: {{ settings.page_width }}px) {{ settings.page_width | minus: 100 | divided_by: 2 }}px,
               (min-width: 750px) calc((100vw - 130px) / 2), calc((100vw - 50px) / 2)
             {%- endcapture -%}
-            {{
-              section.settings['d-image']
-              | image_url: width: 1500
-              | image_tag: sizes: sizes, widths: '165, 360, 535, 750, 1070, 1500'
-            }}
-          </div>
-        {% else %}
-          <div
-            class="desktop-image{%- if section.settings['m-image'] != blank %} has_mobile_image{% endif %}"
-            style="--image-height: {{ section.settings['d-image-height'] }};"
-          >
-            {{ 'lifestyle-2' | placeholder_svg_tag }}
-          </div>
+          {{
+            section.settings['d-image']
+            | image_url: width: 1500
+            | image_tag: sizes: sizes, widths: '165, 360, 535, 750, 1070, 1500'
+          }}
+        </div>
+      {% else %}
+        <div
+          class="desktop-image{%- if section.settings['m-image'] != blank %} has_mobile_image{% endif %}"
+          style="--image-height: {{ section.settings['d-image-height'] }};"
+        >
+          {{ 'lifestyle-2' | placeholder_svg_tag }}
+        </div>
       {% endif %}
       {%- if section.settings['m-image'] != blank and section.settings['d-image'] != blank -%}
         <div class="mobile-image" style="--image-height: {{ section.settings['m-image-height'] }};">
