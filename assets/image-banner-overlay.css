@@ -147,6 +147,9 @@
   .image-with-text-overlay .desktop-image.has_mobile_image {
     display: none;
   }
+  .image-with-text-overlay .desktop-image {
+    height: auto;
+  }
   .image-with-text-overlay .mobile-image {
     display: block;
   }

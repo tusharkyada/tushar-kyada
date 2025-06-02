@@ -75,6 +75,13 @@
                 {%- endcapture -%}
           {{ section.settings['m-image'] | image_url: width: 1500 | image_tag: sizes: sizes }}
         </div>
+      {% else %}
+        <div
+          class="mobile-image"
+          style="--image-height: {{ section.settings['m-image-height'] }};"
+        >
+          {{ 'lifestyle-2' | placeholder_svg_tag }}
+        </div>
       {% endif %}
     </div>
     <div
