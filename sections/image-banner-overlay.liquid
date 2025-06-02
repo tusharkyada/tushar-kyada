@@ -35,7 +35,7 @@
     </div>
     <div
       class="image-with-text-overlay__content content-{{ section.settings.text_position }} content-mobile-{{ section.settings.mobile_text_position }}"
-      style="--text-width: {{ section.settings.text_width }}%; --mobile-text-width: {{ section.settings.mobile_text_width }}%; --text-alignment: {{ section.settings.text_alignment }};{% if section.settings.enable_text_block_bg %}--block-bg: {{section.settings.block_bg_color}};{% endif %}"
+      style="--text-width: {{ section.settings.text_width }}px; --text-alignment: {{ section.settings.text_alignment }};{% if section.settings.enable_text_block_bg %}--block-bg: {{section.settings.block_bg_color}};{% endif %}"
     >
       {% if section.settings.heading != blank %}
         <h2 class="image-with-text-overlay__heading">{{ section.settings.heading }}</h2>
@@ -233,22 +233,12 @@
     {
       "type": "range",
       "id": "text_width",
-      "min": 20,
-      "max": 100,
-      "step": 5,
-      "unit": "%",
+      "min": 320,
+      "max": 800,
+      "step": 20,
+      "unit": "px",
       "label": "Text Block Width (Desktop)",
-      "default": 50
-    },
-    {
-      "type": "range",
-      "id": "mobile_text_width",
-      "min": 50,
-      "max": 100,
-      "step": 5,
-      "unit": "%",
-      "label": "Text Block Width (Mobile)",
-      "default": 90
+      "default": 540
     },
     {
       "type": "select",
