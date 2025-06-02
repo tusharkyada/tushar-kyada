@@ -22,7 +22,7 @@
         "button-label": "Shop Now",
         "button-link": "",
         "enable_text_block_bg": true,
-        "block_bg_color": "rgb(255 255 255 / 25%)",
+        "block_bg_color": "rgb(255 255 255 / 50%)",
         "text_position": "center-center",
         "text_alignment": "center",
         "text_width": 680,
