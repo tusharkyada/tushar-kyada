@@ -67,7 +67,7 @@
           {{ 'lifestyle-2' | placeholder_svg_tag }}
         </div>
       {% endif %}
-      {%- if section.settings['m-image'] != blank and section.settings['d-image'] != blank -%}
+      {%- if section.settings['m-image'] != blank -%}
         <div class="mobile-image" style="--image-height: {{ section.settings['m-image-height'] }};">
           {%- capture sizes -%}
                     (min-width: {{ settings.page_width }}px) {{ settings.page_width | minus: 100 | divided_by: 2 }}px,
