@@ -4,7 +4,7 @@
   <div class="image-with-text-overlay__container">
     <div class="image-with-text-overlay__image">
       {%- if section.settings['d-image'] != blank -%}
-        <div class="desktop-image">
+        <div class="desktop-image" style="--image-height: {{ section.settings['d-image-height'] }};">
           {%- capture sizes -%}
                     (min-width: {{ settings.page_width }}px) {{ settings.page_width | minus: 100 | divided_by: 2 }}px,
                     (min-width: 750px) calc((100vw - 130px) / 2), calc((100vw - 50px) / 2)
@@ -17,7 +17,7 @@
         </div>
       {% endif %}
       {%- if section.settings['m-image'] != blank and section.settings['d-image'] != blank -%}
-        <div class="mobile-image">
+        <div class="mobile-image" style="--image-height: {{ section.settings['m-image-height'] }};">
           {%- capture sizes -%}
                     (min-width: {{ settings.page_width }}px) {{ settings.page_width | minus: 100 | divided_by: 2 }}px,
                     (min-width: 750px) calc((100vw - 130px) / 2), calc((100vw - 50px) / 2)
@@ -69,9 +69,57 @@
       "label": "Desktop Image"
     },
     {
+      "type": "select",
+      "id": "d-image-height",
+      "label": "Desktop Image Height",
+      "default": "medium",
+      "options": [
+        {
+          "value": "small",
+          "label": "Small"
+        },
+        {
+          "value": "medium",
+          "label": "Medium"
+        },
+        {
+          "value": "large",
+          "label": "Large"
+        },
+        {
+          "value": "full",
+          "label": "Full"
+        }
+      ]
+    },
+    {
       "type": "image_picker",
       "id": "m-image",
       "label": "Mobile Image"
+    },
+    {
+      "type": "select",
+      "id": "m-image-height",
+      "label": "Mobile Image Height",
+      "default": "medium",
+      "options": [
+        {
+          "value": "small",
+          "label": "Small"
+        },
+        {
+          "value": "medium",
+          "label": "Medium"
+        },
+        {
+          "value": "large",
+          "label": "Large"
+        },
+        {
+          "value": "full",
+          "label": "Full"
+        }
+      ]
     },
     {
       "type": "header",
