@@ -1,3 +1,10 @@
+.product-grid-popup-container {
+  position: relative;
+  max-width: 1360px;
+  padding: 0 15px;
+  margin: 0 auto;
+}
+
 .product-grid-popup-container .product-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
