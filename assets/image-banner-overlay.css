@@ -3,3 +3,17 @@
   width: 100%;
   overflow: hidden;
 }
+.image-with-text-overlay__image img {
+  width: 100%;
+}
+.image-with-text-overlay .mobile-image {
+  display: none;
+}
+@media screen and (max-width: 768px) {
+  .image-with-text-overlay .desktop-image.has_mobile_image {
+    display: none;
+  }
+  .image-with-text-overlay .mobile-image {
+    display: block;
+  }
+}
