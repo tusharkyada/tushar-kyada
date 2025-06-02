@@ -1,4 +1,6 @@
-{{ 'image-banner-overlay.css' | asset_url | stylesheet_tag }}
+{% comment %} {{ 'image-banner-overlay.css' | asset_url | stylesheet_tag }} {% endcomment %}
+{%- comment -%} {{ 'image-banner-overlay.css' | asset_url | stylesheet_tag }} {%- endcomment -%}
+<link rel="stylesheet" href="{{ 'image-banner-overlay.css' | asset_url }}" media="print">
 
 <section class="image-with-text-overlay" {{ section.shopify_attributes }}>
   <div class="image-with-text-overlay__container">
