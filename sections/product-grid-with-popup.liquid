@@ -14,7 +14,7 @@
 {% endstyle %}
 
 <section
-  class="product-grid-container-{{ section.id }} page-width section-padding-{{ section.id }}"
+  class="product-grid-popup-container page-width section-padding-{{ section.id }}"
   {{ section.shopify_attributes }}
 >
   {% if section.settings.heading != blank %}
@@ -23,7 +23,8 @@
     </div>
   {% endif %}
 
-  <div class="product-grid">
+  <div class="product-grid" style="--columns-mobile: {{ section.settings.columns_mobile }};">
+    `
     {% for block in section.blocks %}
       {% liquid
         assign product = block.settings.product
@@ -35,13 +36,13 @@
             <img
               src="{{ product.featured_image | image_url: width: 500 }}"
               alt="{{ product.featured_image.alt | escape }}"
-              class="product-image-{{ section.id }}"
+              class="product-image-{{ section.id }} product-image"
               loading="lazy"
               width="500"
               height="500"
             >
           {% else %}
-            <div class="product-placeholder-{{ section.id }}">
+            <div class="product-placeholder">
               {{ 'product-apparel-1' | placeholder_svg_tag }}
             </div>
           {% endif %}
@@ -69,6 +70,30 @@
       "type": "text",
       "id": "heading",
       "label": "Heading"
+    },
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "select",
+      "id": "columns_mobile",
+      "label": "Columns on mobile",
+      "options": [
+        {
+          "value": "1",
+          "label": "1"
+        },
+        {
+          "value": "2",
+          "label": "2"
+        }
+      ],
+      "default": "2"
+    },
+    {
+      "type": "header",
+      "content": "Section Padding"
     },
     {
       "type": "range",
