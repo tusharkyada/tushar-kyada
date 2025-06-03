@@ -176,6 +176,155 @@
       currentVariants = {};
     }
 
+    function showVariantSelectors(product) {
+      dom.popupVariants.innerHTML = '';
+      currentVariants = {};
+
+      if (!product.options || product.options.length === 0 || product.variants.length <= 1) {
+        const input = document.createElement('input');
+        input.type = 'hidden';
+        input.name = 'id';
+        input.id = `variant-id-${sectionId}`;
+        input.value = product.variants[0].id;
+        dom.popupVariants.appendChild(input);
+        return;
+      }
+
+      product.options.forEach((option, index) => {
+        const name = option.name;
+        const values = [];
+
+        product.variants.forEach(variant => {
+          const val = variant[`option${index + 1}`];
+          if (val && !values.includes(val)) values.push(val);
+        });
+
+        if (values.length > 0) {
+          const selector = document.createElement('div');
+          selector.className = `variant-selector`;
+
+          const label = document.createElement('label');
+          label.className = `variant-label`;
+          label.textContent = name;
+
+          const select = document.createElement('select');
+          select.className = `variant-select`;
+          select.name = `option${index + 1}`;
+          select.dataset.optionIndex = index;
+
+          values.forEach(val => {
+            const opt = document.createElement('option');
+            opt.value = val;
+            opt.textContent = val;
+            select.appendChild(opt);
+          });
+
+          select.addEventListener('change', updateVariant);
+
+          selector.appendChild(label);
+          selector.appendChild(select);
+          dom.popupVariants.appendChild(selector);
+
+          currentVariants[`option${index + 1}`] = values[0];
+        }
+      });
+
+      const hiddenInput = document.createElement('input');
+      hiddenInput.type = 'hidden';
+      hiddenInput.name = 'id';
+      hiddenInput.id = `variant-id-${sectionId}`;
+      const firstVariant = getSelectedVariant(products[currentProductIndex]);
+      if (firstVariant) hiddenInput.value = firstVariant.id;
+      dom.popupVariants.appendChild(hiddenInput);
+    }
+
+    function updateVariant() {
+      const product = products[currentProductIndex];
+      if (!product) return;
+
+      const selects = dom.popupVariants.querySelectorAll('select');
+      selects.forEach((select, i) => {
+        currentVariants[`option${i + 1}`] = select.value;
+      });
+
+      const variant = getSelectedVariant(product);
+      const input = document.getElementById(`variant-id-${sectionId}`);
+
+      if (variant) {
+        input.value = variant.id;
+        dom.popupPrice.textContent = variant.price;
+      } else {
+        input.value = '';
+        dom.popupPrice.textContent = 'Unavailable';
+      }
+    }
+
+    function getSelectedVariant(product) {
+      return product.variants.find(variant =>
+        product.options.every((option, i) =>
+          variant[`option${i + 1}`] === currentVariants[`option${i + 1}`]
+        )
+      );
+    }
+
+    async function addToCart(e) {
+      e.preventDefault();
+
+      const product = products[currentProductIndex];
+      if (!product) return;
+
+      const variantInput = document.getElementById(`variant-id-${sectionId}`);
+      const variantId = variantInput.value;
+
+      if (!variantId) {
+        dom.errorMessage.textContent = 'Please select a valid variant.';
+        dom.errorMessage.style.display = 'block';
+        return;
+      }
+
+      dom.loadingSpinner.style.display = 'inline-block';
+      dom.buttonText.textContent = 'Adding...';
+      dom.addToCartButton.disabled = true;
+      dom.errorMessage.style.display = 'none';
+      dom.successMessage.style.display = 'none';
+
+      const items = [{ id: variantId, quantity: 1 }];
+
+      try {
+        const res = await fetch('/cart/add.js', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ items })
+        });
+
+        const data = await res.json();
+        if (!res.ok) throw new Error(data.description || 'Error adding to cart');
+
+        dom.loadingSpinner.style.display = 'none';
+        dom.buttonText.textContent = 'Added to cart!';
+        dom.successMessage.textContent = 'Added to cart!';
+        dom.successMessage.style.display = 'block';
+
+        setTimeout(() => {
+          dom.addToCartButton.disabled = false;
+          dom.buttonText.textContent = settings.addToCartText;
+          dom.successMessage.style.display = 'none';
+        }, 2000);
+
+        document.dispatchEvent(new CustomEvent('cart:item-added', {
+          bubbles: true,
+          detail: { items: data.items }
+        }));
+
+      } catch (error) {
+        dom.loadingSpinner.style.display = 'none';
+        dom.buttonText.textContent = settings.addToCartText;
+        dom.errorMessage.textContent = error.message || 'Could not add to cart.';
+        dom.errorMessage.style.display = 'block';
+        dom.addToCartButton.disabled = false;
+      }
+    }
+
     function setupEvents() {
       dom.productItems.forEach((item, index) => {
         item.addEventListener('click', () => {
