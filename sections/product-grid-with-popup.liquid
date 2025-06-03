@@ -218,6 +218,33 @@
           label.className = `variant-label`;
           label.textContent = name;
 
+          const custom_select = document.createElement('div');
+          custom_select.className = `custom-variant-select`;
+          custom_select.dataset.optionName = `option${index + 1}`;
+
+
+          const custom_select_btn = document.createElement('div');
+          custom_select_btn.className = `custom-ul-button`;
+
+          custom_select_btn.innerHTML = `<span class="custom-ui-text">${values[0]}</span>
+            <svg width="16" height="10" viewBox="0 0 16 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M2 2L8 8L14 2" stroke="black" stroke-width="1.5" stroke-linecap="square"/>
+            </svg>`;
+
+
+          const custom_ui = document.createElement('ul');
+          custom_ui.className = `custom-ui`;
+          
+          values.forEach(val => {
+            const opt = document.createElement('li');
+            li.dataset.value = val;
+            li.textContent = val;
+            custom_ui.appendChild(li);
+          });
+
+          custom_select.appendChild(custom_ui);
+
+
           const select = document.createElement('select');
           select.className = `variant-select`;
           select.name = `option${index + 1}`;
