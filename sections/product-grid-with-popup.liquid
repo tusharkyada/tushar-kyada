@@ -292,8 +292,7 @@
         return;
       }
 
-      dom.loadingSpinner.style.display = 'inline-block';
-      dom.buttonText.textContent = 'Adding...';
+      dom.addToCartButton.classList.add("loading-btn");
       dom.addToCartButton.disabled = true;
       dom.errorMessage.style.display = 'none';
       dom.successMessage.style.display = 'none';
@@ -310,14 +309,13 @@
         const data = await res.json();
         if (!res.ok) throw new Error(data.description || 'Error adding to cart');
 
-        dom.loadingSpinner.style.display = 'none';
+        dom.addToCartButton.disabled = false;
+        dom.addToCartButton.classList.remove("loading-btn");
         dom.buttonText.textContent = 'Added to cart!';
         dom.successMessage.textContent = 'Added to cart!';
         dom.successMessage.style.display = 'block';
 
         setTimeout(() => {
-          dom.addToCartButton.disabled = false;
-          dom.buttonText.textContent = settings.addToCartText;
           dom.successMessage.style.display = 'none';
         }, 2000);
 
@@ -327,8 +325,7 @@
         }));
 
       } catch (error) {
-        dom.loadingSpinner.style.display = 'none';
-        dom.buttonText.textContent = settings.addToCartText;
+        dom.addToCartButton.classList.remove("loading-btn");
         dom.errorMessage.textContent = error.message || 'Could not add to cart.';
         dom.errorMessage.style.display = 'block';
         dom.addToCartButton.disabled = false;
