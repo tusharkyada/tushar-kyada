@@ -327,7 +327,6 @@
             });
 
             select.addEventListener('change', (e) => {
-              console.log('Variant changed:', e.target.value,e);
               custom_select_btn.querySelector('.custom-ui-text').textContent = `${e.target.value}`;
             });
           }
@@ -372,8 +371,8 @@
       const input = document.getElementById(`variant-id-${sectionId}`);
 
       dom.popupPrice.textContent = Shopify.formatMoney(variant.price,Shopify.money_format);
+      console.log('Selected variant:', variant);
       input.value = variant.id;
-      console.log('Selected variant:', product);
       dom.popupImage.src = variant?.featured_image?.src || product.featured_image;
       if (variant.available) {
         dom.addToCartButton.disabled = false;
