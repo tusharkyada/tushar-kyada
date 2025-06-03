@@ -339,6 +339,7 @@
       if (!product) return;
 
       console.log(currentVariants,"currentVariants")
+      
       const selects = dom.popupVariants.querySelectorAll('select');
       selects.forEach((select, i) => {
         currentVariants[`option${i + 1}`] = select.value;
