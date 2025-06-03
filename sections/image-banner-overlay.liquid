@@ -34,7 +34,7 @@
           </svg>
         </div>
         {% if section.settings.top_bar_logo != blank %}
-          <div class="top-bar-logo">
+          <div class="top-bar-logo" style="--logo-width: {{ section.settings.top_bar_logo_width }}px;">
             {%- capture sizes -%}
                 (min-width: {{ settings.page_width }}px) {{ settings.page_width | minus: 100 | divided_by: 2 }}px,
                 (min-width: 750px) calc((100vw - 130px) / 2), calc((100vw - 50px) / 2)
@@ -194,6 +194,16 @@
       "type": "image_picker",
       "id": "top_bar_logo",
       "label": "Top Bar Logo"
+    },
+    {
+      "type": "range",
+      "id": "top_bar_logo_width",
+      "min": 100,
+      "max": 400,
+      "step": 10,
+      "unit": "px",
+      "label": "Top Bar Logo Width",
+      "default": 150
     },
     {
       "type": "text",

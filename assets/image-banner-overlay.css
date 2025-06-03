@@ -8,7 +8,7 @@
   grid-gap: 20px;
 }
 .image-with-text-overlay .top-bar-content .top-bar-logo {
-  max-width: 150px;
+  max-width: var(--logo-width);
   width: 100%;
   line-height: 0;
 }
