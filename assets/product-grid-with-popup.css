@@ -342,3 +342,28 @@
   align-items: center;
   justify-content: center;
 }
+
+.custom-variant-picker ul.custom-picker-items {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.custom-variant-picker ul.custom-picker-items li {
+  padding: 10px;
+  border: 1px solid #000000;
+  color: #000000;
+  line-height: normal;
+  cursor: pointer;
+}
+
+.custom-variant-picker ul.custom-picker-items li:nth-child(odd) {
+  border-right: none;
+}
+
+.custom-variant-picker ul.custom-picker-items li.active {
+  color: white;
+  background: #000000;
+}
