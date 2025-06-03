@@ -119,7 +119,8 @@
             description: {{ product.description | strip_html | truncatewords: 30 | json }},
             featured_image: {{ product.featured_image | image_url: width: 800 | json }},
             variants: {{ product.variants | json }},
-            options: {{ product.options | json }}
+            options: {{ product.options | json }},
+            options_with_values: {{ product.options_with_values | json }},
           },
         {% else %}
           null,
@@ -169,7 +170,6 @@
       dom.popupDescription.textContent = product.description;
       dom.errorMessage.style.display = 'none';
       dom.successMessage.style.display = 'none';
-      dom.loadingSpinner.style.display = 'none';
       dom.buttonText.textContent = settings.addToCartText;
       dom.addToCartButton.disabled = false;
 
@@ -188,6 +188,8 @@
     function showVariantSelectors(product) {
       dom.popupVariants.innerHTML = '';
       currentVariants = {};
+
+      console.log(product.options_with_values," product.options");  
 
       if (!product.options || product.options.length === 0 || product.variants.length <= 1) {
         const input = document.createElement('input');
