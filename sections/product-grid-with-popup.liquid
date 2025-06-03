@@ -263,7 +263,7 @@
             custom_picker.appendChild(custom_ui);
             selector.appendChild(custom_picker);  
             
-            custom_ui.querySelectorAll('li').forEach(li => {
+            custom_ui.querySelectorAll('div').forEach(li => {
               li.addEventListener('click', () => {
                 custom_ui.querySelectorAll('div').forEach(item => {
                   if (item !== li) item.classList.remove('active');
