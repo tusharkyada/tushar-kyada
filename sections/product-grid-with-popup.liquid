@@ -191,7 +191,7 @@
 
       console.log(product.options_with_values," product.options");  
 
-      if (!product.options || product.options.length === 0 || product.variants.length <= 1) {
+      if (!product.options_with_values || product.options_with_values.length === 0 || product.variants.length <= 1) {
         const input = document.createElement('input');
         input.type = 'hidden';
         input.name = 'id';
@@ -201,7 +201,7 @@
         return;
       }
 
-      product.options.forEach((option, index) => {
+      product.options_with_values.forEach((option, index) => {
         const name = option.name;
         const values = [];
 
