@@ -268,6 +268,21 @@
           dom.popupVariants.appendChild(selector);
 
           currentVariants[`option${index + 1}`] = values[0];
+
+          custom_select_btn.addEventListener('click', () => {
+            custom_select.classList.toggle('active');
+          });
+          
+          custom_ui.querySelectorAll('li').forEach(li => {
+            li.addEventListener('click', () => {
+              select.value = li.dataset.value;
+              select.dispatchEvent(new CustomEvent('customSelectChange', { detail: { value: li.dataset.value } }))
+              currentVariants[`option${index + 1}`] = li.dataset.value;
+              updateVariant();
+              custom_select.classList.remove('active');
+              custom_select_btn.querySelector('.custom-ui-text').textContent = `${li.dataset.value}`;
+            });
+          });
         }
       });
 

@@ -296,6 +296,11 @@
   overflow-y: auto;
 }
 
+.custom-variant-select.active ul.custom-ui {
+  opacity: 1;
+  visibility: visible;
+}
+
 .custom-variant-select ul.custom-ui li {
   padding: 10px;
   text-align: center;
