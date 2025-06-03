@@ -279,6 +279,10 @@
                 updateVariant();
               });
             });
+
+            select.addEventListener('change', (e) => {
+              document.querySelector(`div[data-value="${e.target.value}"]`).classList.add('active');
+            }); 
           } else {
             const custom_select = document.createElement('div');
             custom_select.className = `custom-variant-select`;
@@ -321,7 +325,7 @@
                 custom_select_btn.querySelector('.custom-ui-text').textContent = `${li.dataset.value}`;
               });
             });
-            
+
             select.addEventListener('change', (e) => {
               console.log('Variant changed:', e.target.value,e);
               custom_select_btn.querySelector('.custom-ui-text').textContent = `${e.target.value}`;
