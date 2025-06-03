@@ -226,7 +226,16 @@
   transition: background-color 0.3s ease;
   margin-top: 15px;
   width: 100%;
+  text-transform: uppercase;
   padding: 15px 60px 15px 15px;
+  position: relative;
+}
+
+.product-grid-popup-container .add-to-cart .button-svg {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 20px;
 }
 
 .product-grid-popup-container .loading {
