@@ -184,6 +184,10 @@
   display: none;
 }
 @media screen and (max-width: 768px) {
+  .image-with-text-overlay .image-with-text-overlay__content_wrapper {
+    position: static;
+    order: -1;
+  }
   .top-bar-wrapper .mobile_menu {
     cursor: pointer;
     display: block;

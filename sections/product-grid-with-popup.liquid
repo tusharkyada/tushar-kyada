@@ -37,8 +37,8 @@
               alt="{{ product.featured_image.alt | escape }}"
               class="product-image-{{ section.id }} product-image"
               loading="lazy"
-              width="500"
-              height="500"
+              width=""
+              height=""
             >
           {% else %}
             <div class="product-placeholder">
@@ -58,7 +58,141 @@
       </div>
     {% endfor %}
   </div>
+
+  <div class="product-popup-{{ section.id }}">
+    <div class="popup-content">
+      <button class="popup-close" aria-label="Close">✕</button>
+      <div class="popup-grid">
+        <div class="popup-image-wrapper">
+          <img
+            src=""
+            alt=""
+            class="popup-image"
+            loading="lazy"
+            width=""
+            height=""
+          >
+        </div>
+        <div class="popup-details">
+          <h2 class="popup-title"></h2>
+          <div class="popup-price"></div>
+          <div class="popup-description"></div>
+          <form class="popup-form-{{ section.id }}">
+            <div class="popup-variants"></div>
+            <button
+              type="submit"
+              class="add-to-cart"
+              style="--bg-color: {{ section.settings.button_bg_color }}; --text-color: {{ section.settings.button_text_color }};"
+            >
+              <span class="loading"></span>
+              <span class="button-text">{{ section.settings.add_to_cart_text }}</span>
+            </button>
+            <div class="error-message"></div>
+            <div class="success-message"></div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
 </section>
+
+<script>
+  function initProductGridSection() {
+    const products = [
+      {% for block in section.blocks %}
+        {% liquid assign product = block.settings.product %}
+        {% if product != blank %}
+          {
+            id: {{ product.id }},
+            title: {{ product.title | json }},
+            handle: {{ product.handle | json }},
+            price: {{ product.price | money | json }},
+            description: {{ product.description | strip_html | truncatewords: 30 | json }},
+            featured_image: {{ product.featured_image | image_url: width: 800 | json }},
+            variants: {{ product.variants | json }},
+            options: {{ product.options | json }}
+          },
+        {% else %}
+          null,
+        {% endif %}
+      {% endfor %}
+    ];
+
+    const settings = {
+      addToCartText: {{ section.settings.add_to_cart_text | json }},
+      moneyFormat: {{ shop.money_format | json }}
+    };
+
+    const sectionId = '{{ section.id }}';
+    const root = document.querySelector(`product-grid-section-${sectionId}`) || document;
+
+    const dom = {
+      productItems: root.querySelectorAll(`.product-item`),
+      popup: root.querySelector(`.product-popup-${sectionId}`),
+      popupContent: root.querySelector(`.popup-content`),
+      closeButton: root.querySelector(`.popup-close`),
+      popupImage: root.querySelector(`.popup-image`),
+      popupTitle: root.querySelector(`.popup-title`),
+      popupPrice: root.querySelector(`.popup-price`),
+      popupDescription: root.querySelector(`.popup-description`),
+      popupVariants: root.querySelector(`.popup-variants`),
+      addToCartButton: root.querySelector(`.add-to-cart`),
+      addToCartForm: root.querySelector(`.popup-form-${sectionId}`),
+      loadingSpinner: root.querySelector(`.loading`),
+      errorMessage: root.querySelector(`.error-message`),
+      successMessage: root.querySelector(`.success-message`),
+      buttonText: root.querySelector(`.button-text`),
+    };
+
+    let currentProductIndex = null;
+    let currentVariants = {};
+
+    function openPopup(index) {
+      const product = products[index];
+      if (!product) return;
+
+      currentProductIndex = index;
+
+      dom.popupImage.src = product.featured_image || '';
+      dom.popupImage.alt = product.title;
+      dom.popupTitle.textContent = product.title;
+      dom.popupPrice.textContent = product.price;
+      dom.popupDescription.textContent = product.description;
+      dom.errorMessage.style.display = 'none';
+      dom.successMessage.style.display = 'none';
+      dom.loadingSpinner.style.display = 'none';
+      dom.buttonText.textContent = settings.addToCartText;
+      dom.addToCartButton.disabled = false;
+
+      showVariantSelectors(product);
+      dom.popup.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function setupEvents() {
+      dom.productItems.forEach((item, index) => {
+        item.addEventListener('click', () => {
+          const idx = parseInt(item.dataset.productIndex);
+          if (products[idx]) openPopup(idx);
+        });
+      });
+
+      dom.closeButton.addEventListener('click', closePopup);
+      dom.popup.addEventListener('click', (e) => {
+        if (e.target === dom.popup) closePopup();
+      });
+
+      dom.addToCartForm.addEventListener('submit', addToCart);
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') closePopup();
+      });
+    }
+
+    setupEvents();
+  }
+
+  document.addEventListener('DOMContentLoaded', initProductGridSection);
+</script>
 
 {% schema %}
 {
@@ -89,6 +223,32 @@
         }
       ],
       "default": "2"
+    },
+    {
+      "type": "header",
+      "content": "Popup Settings"
+    },
+    {
+      "type": "text",
+      "id": "add_to_cart_text",
+      "label": "Add to cart button text",
+      "default": "Add to cart"
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "button_bg_color",
+      "label": "Button background",
+      "default": "#000f9f"
+    },
+    {
+      "type": "color",
+      "id": "button_text_color",
+      "label": "Button text",
+      "default": "#ffffff"
     },
     {
       "type": "header",
