@@ -226,13 +226,11 @@
           const custom_select_btn = document.createElement('div');
           custom_select_btn.className = `custom-ul-button`;
 
-          custom_select_btn.innerHTML = `<span class="custom-ui-text">${values[0]}</span>
-            <svg width="16" height="10" viewBox="0 0 16 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+          custom_select_btn.innerHTML = `<span class="custom-ui-text">Choose your size ${option.name}</span>
+            <span class="custom-svg-wrapper"><svg width="16" height="10" viewBox="0 0 16 10" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M2 2L8 8L14 2" stroke="black" stroke-width="1.5" stroke-linecap="square"/>
-            </svg>`;
+            </svg></span>`;
 
-
-            console.log(custom_select_btn,custom_select," custom_select_btn");
 
           custom_select.appendChild(custom_select_btn);
 
