@@ -347,9 +347,9 @@
       const input = document.getElementById(`variant-id-${sectionId}`);
 
       dom.popupPrice.textContent = Shopify.formatMoney(variant.price,Shopify.money_format);
-
+      input.value = variant.id;
+      console.log('Selected variant:', variant);
       if (variant) {
-        input.value = variant.id;
       } else {
         input.value = '';
         {% comment %} dom.popupPrice.textContent = 'Unavailable'; {% endcomment %}
