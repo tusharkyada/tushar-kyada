@@ -241,7 +241,40 @@
 
 
           if (option.name.toLowerCase().includes('color')) {
-            console.log("Color option detected:", option.name);
+            const custom_picker = document.createElement('div');
+            custom_picker.className = `custom-variant-picker`;
+            custom_picker.dataset.optionName = `option${index + 1}`;
+
+
+            const custom_ui = document.createElement('ul');
+            custom_ui.className = `custom-picker-items`;
+            
+            values.forEach(val => {
+              const li = document.createElement('li');
+              const span = document.createElement('span');
+              span.className = `color-swatch`;
+              span.style.backgroundColor = val;
+              li.appendChild(span);
+              li.dataset.value = val;
+              li.textContent = val;
+              custom_ui.appendChild(li);
+            });
+
+            custom_picker.appendChild(custom_ui);
+            selector.appendChild(custom_picker);  
+            
+            custom_ui.querySelectorAll('li').forEach(li => {
+              li.addEventListener('click', () => {
+                custom_ui.querySelectorAll('li').forEach(item => {
+                  if (item !== li) item.classList.remove('active');
+                });
+                li.classList.add('active');
+                select.value = li.dataset.value;
+                select.dispatchEvent(new CustomEvent('customSelectChange', { detail: { value: li.dataset.value } }))
+                currentVariants[`option${index + 1}`] = li.dataset.value;
+                updateVariant();
+              });
+            });
           } else {
             const custom_select = document.createElement('div');
             custom_select.className = `custom-variant-select`;
@@ -255,10 +288,7 @@
               <span class="custom-svg-wrapper"><svg width="16" height="10" viewBox="0 0 16 10" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M2 2L8 8L14 2" stroke="black" stroke-width="1.5" stroke-linecap="square"/>
               </svg></span>`;
-
-
             custom_select.appendChild(custom_select_btn);
-
 
             const custom_ui = document.createElement('ul');
             custom_ui.className = `custom-ui`;
