@@ -246,11 +246,11 @@
             custom_picker.dataset.optionName = `option${index + 1}`;
 
 
-            const custom_ui = document.createElement('ul');
+            const custom_ui = document.createElement('div');
             custom_ui.className = `custom-picker-items`;
             
             values.forEach(val => {
-              const li = document.createElement('li');
+              const li = document.createElement('div');
               const span = document.createElement('span');
               span.className = `color-swatch`;
               span.style.backgroundColor = val;
@@ -265,8 +265,7 @@
             
             custom_ui.querySelectorAll('li').forEach(li => {
               li.addEventListener('click', () => {
-                console.log(li, 'li');
-                custom_ui.querySelectorAll('li').forEach(item => {
+                custom_ui.querySelectorAll('div').forEach(item => {
                   if (item !== li) item.classList.remove('active');
                 });
                 li.classList.add('active');
