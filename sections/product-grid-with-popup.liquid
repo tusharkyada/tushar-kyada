@@ -15,7 +15,7 @@
 {% endstyle %}
 
 <section
-  class="product-grid-popup-container page-width section-padding-{{ section.id }}"
+  class="product-grid-popup-container position-relative container section-padding-{{ section.id }}"
   {{ section.shopify_attributes }}
 >
   {% if section.settings.heading != blank %}
@@ -24,30 +24,30 @@
     </div>
   {% endif %}
 
-  <div class="product-grid" style="--columns-mobile: {{ section.settings.columns_mobile }};">
+  <div class="product-grid d-grid" style="--columns-mobile: {{ section.settings.columns_mobile }};">
     {% for block in section.blocks %}
       {% liquid
         assign product = block.settings.product
         assign current_product_index = forloop.index0
       %}
-      <div class="product-item" data-product-index="{{ current_product_index }}">
-        <div class="product-image-wrapper">
+      <div class="product-item position-relative overflow-hidden" data-product-index="{{ current_product_index }}">
+        <div class="product-image-wrapper  position-relative overflow-hidden">
           {% if product != blank and product.featured_image %}
             <img
               src="{{ product.featured_image | image_url: width: 500 }}"
               alt="{{ product.featured_image.alt | escape }}"
-              class="product-image-{{ section.id }} product-image"
+              class="product-image-{{ section.id }} product-image position-absolute"
               loading="lazy"
               width=""
               height=""
             >
           {% else %}
-            <div class="product-placeholder">
+            <div class="product-placeholder position-absolute d-flex align-items-center justify-content-center">
               {{ 'product-apparel-1' | placeholder_svg_tag }}
             </div>
           {% endif %}
           <div
-            class="product-icon"
+            class="product-icon position-absolute d-flex align-items-center justify-content-center"
             style="--X-position: {{ block.settings.x-position }}%; --Y-position: {{ block.settings.y-position }}%;"
           >
             <svg width="11" height="11" viewBox="0 0 11 11" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -60,21 +60,26 @@
     {% endfor %}
   </div>
 
-  <div class="product-popup-{{ section.id }} product-popup">
-    <div class="popup-content">
-      <button class="popup-close" aria-label="Close">✕</button>
-      <div class="popup-grid">
-        <div class="popup-image-wrapper">
+  <div class="product-popup-{{ section.id }} product-popup  d-flex align-items-center justify-content-center">
+    <div class="popup-content position-relative">
+      <button
+        class="popup-close position-absolute d-flex align-items-center justify-content-center"
+        aria-label="Close"
+      >
+        ✕
+      </button>
+      <div class="popup-grid d-grid align-items-start">
+        <div class="popup-image-wrapper position-relative overflow-hidden">
           <img
             src=""
             alt=""
-            class="popup-image"
+            class="popup-image position-absolute w-100 h-100"
             loading="lazy"
             width=""
             height=""
           >
         </div>
-        <div class="popup-details">
+        <div class="popup-details d-flex flex-column">
           <h2 class="popup-title"></h2>
           <div class="popup-price"></div>
           <div class="popup-description"></div>

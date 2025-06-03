@@ -1,20 +1,10 @@
-.product-grid-popup-container {
-  position: relative;
-  max-width: 1360px;
-  padding: 0 15px;
-  margin: 0 auto;
-}
-
 .product-grid-popup-container .product-grid {
-  display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 20px;
 }
 
 .product-grid-popup-container .product-item {
-  position: relative;
   cursor: pointer;
-  overflow: hidden;
   transition: transform 0.3s ease;
 }
 
@@ -24,13 +14,10 @@
 }
 
 .product-grid-popup-container .product-image-wrapper {
-  position: relative;
   padding-bottom: 100%;
-  overflow: hidden;
 }
 
 .product-grid-popup-container .product-image {
-  position: absolute;
   top: 0;
   left: 0;
   width: 100%;
@@ -38,7 +25,6 @@
   object-fit: cover;
 }
 .product-grid-popup-container .product-icon {
-  position: absolute;
   width: 22px;
   height: 22px;
   background: #f8f8f8e5;
@@ -47,9 +33,6 @@
   left: var(--Y-position);
   transform: translate(calc(-0% - var(--X-position)), calc(-0% - var(--Y-position)));
   border-radius: 50px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 .product-grid-popup-container .product-icon svg {
   display: block;
@@ -58,14 +41,10 @@
 }
 
 .product-grid-popup-container .product-placeholder {
-  position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   background-color: #f4f4f4;
 }
 
@@ -83,9 +62,6 @@
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.5);
-  display: flex;
-  align-items: center;
-  justify-content: center;
   z-index: 1000;
   opacity: 0;
   visibility: hidden;
@@ -98,7 +74,6 @@
 }
 
 .product-grid-popup-container .popup-content {
-  position: relative;
   width: 90%;
   max-width: 360px;
   max-height: 90vh;
@@ -116,7 +91,6 @@
 }
 
 .product-grid-popup-container .popup-close {
-  position: absolute;
   top: 15px;
   right: 15px;
   width: 15px;
@@ -127,38 +101,23 @@
   color: #000;
   font-weight: 600;
   font-size: 15px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   padding: 0;
 }
 
 .product-grid-popup-container .popup-grid {
-  display: grid;
   grid-template-columns: 1fr 1.3fr;
   gap: 8px;
-  align-items: start;
 }
 
 .product-grid-popup-container .popup-image-wrapper {
-  position: relative;
   padding-bottom: 120%;
-  overflow: hidden;
   border-radius: 0px;
 }
 
 .product-grid-popup-container .popup-image {
-  position: absolute;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
   object-fit: cover;
-}
-
-.product-grid-popup-container .popup-details {
-  display: flex;
-  flex-direction: column;
 }
 
 .product-grid-popup-container .popup-title {
