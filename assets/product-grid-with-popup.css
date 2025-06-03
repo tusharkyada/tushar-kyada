@@ -150,7 +150,7 @@
   position: relative;
   padding-bottom: 120%;
   overflow: hidden;
-  border-radius: 8px;
+  border-radius: 0px;
 }
 
 .product-grid-popup-container .popup-image {
@@ -168,20 +168,29 @@
 }
 
 .product-grid-popup-container .popup-title {
-  margin: 0 0 10px;
-  font-size: 24px;
-  font-weight: 600;
+  margin: 10px 0 15px;
+  font-size: 16px;
+  font-weight: 300;
 }
 
 .product-grid-popup-container .popup-price {
-  font-size: 20px;
-  font-weight: 500;
+  font-size: 16px;
   margin-bottom: 15px;
+  line-height: normal;
+  color: black;
+  font-weight: 400;
 }
 
 .product-grid-popup-container .popup-description {
-  margin-bottom: 20px;
-  line-height: 1.5;
+  font-size: 14px;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #000000;
+  font-weight: 300;
+}
+
+.product-grid-popup-container .action-wrapper {
+  margin-top: 10px;
 }
 
 .product-grid-popup-container .popup-variants {
