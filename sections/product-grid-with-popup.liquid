@@ -338,14 +338,12 @@
       const product = products[currentProductIndex];
       if (!product) return;
 
-      {% comment %}
-        const selects = dom.popupVariants.querySelectorAll('select');
+      console.log(currentVariants,"currentVariants")
+      const selects = dom.popupVariants.querySelectorAll('select');
       selects.forEach((select, i) => {
         currentVariants[`option${i + 1}`] = select.value;
       }); 
-      {% endcomment %}
-      
-      console.log('Current variants:', currentVariants,selects);
+
 
       const variant = getSelectedVariant(product);
       const input = document.getElementById(`variant-id-${sectionId}`);
