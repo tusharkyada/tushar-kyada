@@ -241,6 +241,10 @@
           selector.appendChild(select);
           dom.popupVariants.appendChild(selector);
 
+          select.addEventListener('input', (e) => {
+            custom_select_btn.querySelector('.custom-ui-text').textContent = `${e.target.value}`;
+          });
+
           {% comment %} currentVariants[`option${index + 1}`] = values[0]; {% endcomment %}
 
 
@@ -339,11 +343,22 @@
       if (!product) return;
 
       console.log(currentVariants,"currentVariants")
-      
+
       const selects = dom.popupVariants.querySelectorAll('select');
       selects.forEach((select, i) => {
         currentVariants[`option${i + 1}`] = select.value;
       }); 
+
+
+      const selects = document.querySelectorAll('.variant-select');
+      selects.forEach(select => {
+        const optionKey = select.getAttribute('name');
+        if (optionKey && currentVariants[optionKey]) {
+          select.value = currentVariants[optionKey];
+          const changeEvent = new Event('change', { bubbles: true });
+          select.dispatchEvent(changeEvent);
+        }
+      });
 
 
       const variant = getSelectedVariant(product);
