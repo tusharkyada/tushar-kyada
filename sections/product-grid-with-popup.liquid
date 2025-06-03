@@ -334,6 +334,7 @@
         }
       });
 
+      {%comment %}
       const hiddenInput = document.createElement('input');
       hiddenInput.type = 'hidden';
       hiddenInput.name = 'id';
@@ -342,6 +343,7 @@
       console.log(firstVariant,"firstVariant")
       if (firstVariant) hiddenInput.value = firstVariant.id;
       dom.popupVariants.appendChild(hiddenInput);
+      {% endcomment %}
     }
 
     function updateVariant() {
