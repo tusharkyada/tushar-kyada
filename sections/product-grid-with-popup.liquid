@@ -350,8 +350,8 @@
       }); 
 
 
-      const selects = document.querySelectorAll('.variant-select');
-      selects.forEach(select => {
+      const selectValueSet = document.querySelectorAll('.variant-select');
+      selectValueSet.forEach(select => {
         const optionKey = select.getAttribute('name');
         if (optionKey && currentVariants[optionKey]) {
           select.value = currentVariants[optionKey];
