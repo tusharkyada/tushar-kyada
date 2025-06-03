@@ -342,6 +342,8 @@
       selects.forEach((select, i) => {
         currentVariants[`option${i + 1}`] = select.value;
       });
+      
+      console.log('Current variants:', currentVariants,selects);
 
       const variant = getSelectedVariant(product);
       const input = document.getElementById(`variant-id-${sectionId}`);
