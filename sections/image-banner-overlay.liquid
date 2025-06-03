@@ -1,12 +1,13 @@
-<link rel="stylesheet" href="{{ 'image-banner-overlay.css' | asset_url }}">
+<link rel="stylesheet" href="{{ 'common.css' | asset_url }}" media="print" onload="this.media='all'">
+<link rel="stylesheet" href="{{ 'image-banner-overlay.css' | asset_url }}" media="print" onload="this.media='all'">
 
 <section class="image-with-text-overlay" {{ section.shopify_attributes }}>
   {% if section.settings.top_bar_logo != blank
     or section.settings.top_bar_text != blank
     or section.settings.top_bar_button_label != blank
   %}
-    <div class="top-bar-wrapper" style="background-color: {{ section.settings.top_bar_color }};">
-      <div class="top-bar-content">
+    <div class="top-bar-wrapper position-relative" style="background-color: {{ section.settings.top_bar_color }};">
+      <div class="top-bar-content container d-flex justify-content-between align-items-center flex-wrap">
         <div class="mobile_menu">
           <svg
             class="open_btn"
@@ -54,7 +55,7 @@
           <div class="top-bar__button">
             <a
               href="{% if section.settings.top_bar_button_link != blank %}{{ section.settings.top_bar_button_link }}{% else %}javascript:void(0);{% endif %}"
-              class="btn"
+              class="btn btn-arrow-right"
               style="--background-color: {{ section.settings.top_button_color }}; --text-color: {{ section.settings.top_button_text_color }}; --font-size: {{ section.settings.button_text_size }}px;"
             >
               {{ section.settings.top_bar_button_label }}
@@ -65,7 +66,7 @@
           </div>
         {% endif %}
       </div>
-      <div class="mobile_content">
+      <div class="mobile_content position-absolute text-center w-100 flex-wrap justify-content-center d-flex">
         {% if section.settings.top_bar_text != blank %}
           <div class="top-bar-text" style="color: {{ section.settings.top_bar_text_color }};">
             {{ section.settings.top_bar_text }}
@@ -75,7 +76,7 @@
           <div class="top-bar__button">
             <a
               href="{% if section.settings.top_bar_button_link != blank %}{{ section.settings.top_bar_button_link }}{% else %}javascript:void(0);{% endif %}"
-              class="btn"
+              class="btn btn-arrow-right"
               style="--background-color: {{ section.settings.top_button_color }}; --text-color: {{ section.settings.top_button_text_color }}; --font-size: {{ section.settings.button_text_size }}px;"
             >
               {{ section.settings.top_bar_button_label }}
@@ -88,7 +89,7 @@
       </div>
     </div>
   {% endif %}
-  <div class="image-with-text-overlay__container">
+  <div class="image-with-text-overlay__container position-relative overflow-hidden w-100">
     <div class="image-with-text-overlay__image">
       {%- if section.settings['d-image'] != blank -%}
         <div
@@ -123,9 +124,9 @@
         </div>
       {% endif %}
     </div>
-    <div class="image-with-text-overlay__content_wrapper">
+    <div class="image-with-text-overlay__content_wrapper container position-relative">
       <div
-        class="image-with-text-overlay__content content-{{ section.settings.text_position }} content-mobile-{{ section.settings.mobile_text_position }}"
+        class="image-with-text-overlay__content position-absolute w-100 content-{{ section.settings.text_position }} content-mobile-{{ section.settings.mobile_text_position }}"
         style="--text-width: {{ section.settings.text_width }}px; --block-radius: {{ section.settings.overlay_border_radius }}px; --text-alignment: {{ section.settings.text_alignment }};{% if section.settings.enable_text_block_bg %}--block-bg: {{section.settings.block_bg_color}};{% endif %}"
       >
         {% if section.settings.heading != blank %}
@@ -148,7 +149,7 @@
           <div class="image-with-text-overlay__button">
             <a
               href="{% if section.settings.button-link != blank %}{{ section.settings.button-link }}{% else %}javascript:void(0);{% endif %}"
-              class="btn"
+              class="btn btn-arrow-right"
               style="--background-color: {{ section.settings.button_color }}; --text-color: {{ section.settings.button_text_color }}; --font-size: {{ section.settings.button_text_size }}px;"
             >
               {{ section.settings['button-label'] }}
@@ -163,7 +164,7 @@
   </div>
   {% if section.settings.bottom_text != blank %}
     <div
-      class="bottom-text-wrapper"
+      class="bottom-text-wrapper text-center"
       style="color: {{ section.settings.bootm_text_color }}; background-color: {{ section.settings.bottom_text_bg_color }};"
     >
       {{ section.settings.bottom_text }}
