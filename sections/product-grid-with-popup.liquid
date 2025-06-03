@@ -241,11 +241,6 @@
           selector.appendChild(select);
           dom.popupVariants.appendChild(selector);
 
-          select.addEventListener('change', (e) => {
-            console.log('Variant changed:', e.target.value,e);
-            custom_select_btn.querySelector('.custom-ui-text').textContent = `${e.target.value}`;
-          });
-
           {% comment %} currentVariants[`option${index + 1}`] = values[0]; {% endcomment %}
 
 
@@ -327,6 +322,11 @@
               });
             });
           }
+          
+          select.addEventListener('change', (e) => {
+            console.log('Variant changed:', e.target.value,e);
+            custom_select_btn.querySelector('.custom-ui-text').textContent = `${e.target.value}`;
+          });
         }
       });
 
