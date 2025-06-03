@@ -131,6 +131,9 @@
       "settings": {
         "heading": "Tisso vison in the wild",
         "columns_mobile": "2",
+        "add_to_cart_text": "Add to cart",
+        "button_bg_color": "#000000",
+        "button_text_color": "#ffffff",
         "section-padding-top": 40,
         "section-padding-bottom": 40
       }
