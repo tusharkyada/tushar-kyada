@@ -265,6 +265,7 @@
             
             custom_ui.querySelectorAll('li').forEach(li => {
               li.addEventListener('click', () => {
+                console.log(li, 'li');
                 custom_ui.querySelectorAll('li').forEach(item => {
                   if (item !== li) item.classList.remove('active');
                 });
