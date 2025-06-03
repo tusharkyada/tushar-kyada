@@ -403,10 +403,13 @@
           dom.successMessage.style.display = 'none';
         }, 2000);
 
-        document.dispatchEvent(new CustomEvent('cart:item-added', {
-          bubbles: true,
-          detail: { items: data.items }
-        }));
+
+        console.log("data", data);
+
+        var cart = document.querySelector('cart-notification') || document.querySelector('cart-drawer');
+        CartPerformance.measure("add:paint-updated-sections", () => {
+          cart.renderContents(data);
+        });
 
       } catch (error) {
         dom.addToCartButton.classList.remove("loading-btn");
