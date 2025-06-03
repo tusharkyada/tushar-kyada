@@ -321,12 +321,13 @@
                 custom_select_btn.querySelector('.custom-ui-text').textContent = `${li.dataset.value}`;
               });
             });
+            
+            select.addEventListener('change', (e) => {
+              console.log('Variant changed:', e.target.value,e);
+              custom_select_btn.querySelector('.custom-ui-text').textContent = `${e.target.value}`;
+            });
           }
           
-          select.addEventListener('change', (e) => {
-            console.log('Variant changed:', e.target.value,e);
-            custom_select_btn.querySelector('.custom-ui-text').textContent = `${e.target.value}`;
-          });
         }
       });
 
