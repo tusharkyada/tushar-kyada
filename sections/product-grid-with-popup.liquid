@@ -189,8 +189,6 @@
       dom.popupVariants.innerHTML = '';
       currentVariants = {};
 
-      console.log(product.options_with_values," product.options");  
-
       if (!product.options_with_values || product.options_with_values.length === 0 || product.variants.length <= 1) {
         const input = document.createElement('input');
         input.type = 'hidden';
@@ -237,7 +235,7 @@
           selector.appendChild(select);
           dom.popupVariants.appendChild(selector);
 
-          currentVariants[`option${index + 1}`] = values[0];
+          {% comment %} currentVariants[`option${index + 1}`] = values[0]; {% endcomment %}
 
 
           if (option.name.toLowerCase().includes('color')) {
