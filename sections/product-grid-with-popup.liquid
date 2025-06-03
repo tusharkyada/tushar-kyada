@@ -384,18 +384,28 @@
 
       const items = [{ id: variantId, quantity: 1 }];
       const formData = new FormData();
-      formData.append('id', variantId);
+      {% comment %} formData.append('id', variantId);
       formData.append('quantity', 1);
 
       // Add sections
       formData.append('sections',thiscart.getSectionsToRender().map((section) => section.id).join(','));
-      formData.append('sections_url', window.location.pathname);
+      formData.append('sections_url', window.location.pathname); {% endcomment %}
+
+      const body = {
+        items: [{
+          id: parseInt(variantId),
+          quantity: 1
+        }],
+        sections: cartComponent.getSectionsToRender().map((section) => section.id),
+        sections_url: window.location.pathname
+      };
+
 
       try {
         const res = await fetch('/cart/add.js', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: formData
+          body:  JSON.stringify(body)
         });
 
         const data = await res.json();
