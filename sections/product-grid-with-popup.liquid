@@ -388,7 +388,7 @@
       formData.append('quantity', 1);
 
       // Add sections
-      formData.append('sections',window.cart.getSectionsToRender().map((section) => section.id).join(','));
+      formData.append('sections',thiscart.getSectionsToRender().map((section) => section.id).join(','));
       formData.append('sections_url', window.location.pathname);
 
       try {
