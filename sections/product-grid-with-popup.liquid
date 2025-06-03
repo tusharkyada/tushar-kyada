@@ -354,9 +354,10 @@
       selectValueSet.forEach(select => {
         const optionKey = select.getAttribute('name');
         if (optionKey && currentVariants[optionKey]) {
-          select.value = currentVariants[optionKey];
+          console.log(currentVariants[optionKey]);
+          {% comment %} select.value = currentVariants[optionKey];
           const changeEvent = new Event('change', { bubbles: true });
-          select.dispatchEvent(changeEvent);
+          select.dispatchEvent(changeEvent); {% endcomment %}
         }
       });
 
