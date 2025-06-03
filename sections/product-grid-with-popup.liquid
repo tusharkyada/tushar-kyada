@@ -349,7 +349,7 @@
       dom.popupPrice.textContent = Shopify.formatMoney(variant.price,Shopify.money_format);
       input.value = variant.id;
       console.log('Selected variant:', product);
-      dom.popupImage.src = variant.featured_image.src || product.featured_image;
+      dom.popupImage.src = variant?.featured_image?.src || product.featured_image;
       if (variant.available) {
         dom.addToCartButton.disabled = false;
         dom.buttonText.textContent = settings.addToCartText;
