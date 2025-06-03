@@ -235,7 +235,7 @@
             select.appendChild(opt);
           });
 
-          select.addEventListener('change', updateVariant);
+          {% comment %} select.addEventListener('change', updateVariant); {% endcomment %}
 
           selector.appendChild(label);
           selector.appendChild(select);
@@ -355,9 +355,9 @@
         const optionKey = select.getAttribute('name');
         if (optionKey && currentVariants[optionKey]) {
           console.log(currentVariants[optionKey]);
-          {% comment %} select.value = currentVariants[optionKey];
+          select.value = currentVariants[optionKey];
           const changeEvent = new Event('change', { bubbles: true });
-          select.dispatchEvent(changeEvent); {% endcomment %}
+          select.dispatchEvent(changeEvent);
         }
       });
 
