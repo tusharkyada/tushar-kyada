@@ -349,8 +349,12 @@
       dom.popupPrice.textContent = Shopify.formatMoney(variant.price,Shopify.money_format);
       input.value = variant.id;
       console.log('Selected variant:', variant);
-      if (variant) {
+      if (variant.available) {
+        dom.addToCartButton.disabled = true;
+        dom.buttonText.textContent = "Sold out";
       } else {
+        dom.addToCartButton.disabled = false;
+        dom.buttonText.textContent = settings.addToCartText;
         input.value = '';
         {% comment %} dom.popupPrice.textContent = 'Unavailable'; {% endcomment %}
       }
