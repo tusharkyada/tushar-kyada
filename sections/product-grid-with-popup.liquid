@@ -169,6 +169,13 @@
       document.body.style.overflow = 'hidden';
     }
 
+    function closePopup() {
+      dom.popup.classList.remove('active');
+      document.body.style.overflow = '';
+      currentProductIndex = null;
+      currentVariants = {};
+    }
+
     function setupEvents() {
       dom.productItems.forEach((item, index) => {
         item.addEventListener('click', () => {
