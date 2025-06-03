@@ -339,6 +339,7 @@
       hiddenInput.name = 'id';
       hiddenInput.id = `variant-id-${sectionId}`;
       const firstVariant = getSelectedVariant(products[currentProductIndex]);
+      console.log(firstVariant,"firstVariant")
       if (firstVariant) hiddenInput.value = firstVariant.id;
       dom.popupVariants.appendChild(hiddenInput);
     }
