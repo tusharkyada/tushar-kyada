@@ -251,13 +251,13 @@
             
             values.forEach(val => {
               const li = document.createElement('div');
+              li.dataset.value = val;
+              li.textContent = val;
               const span = document.createElement('span');
               span.className = `color-swatch`;
               span.style.backgroundColor = val;
-              console.log(span," val");
+              console.log(span,li," val");
               li.appendChild(span);
-              li.dataset.value = val;
-              li.textContent = val;
               custom_ui.appendChild(li);
             });
 
