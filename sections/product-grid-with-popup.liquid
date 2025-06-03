@@ -334,7 +334,6 @@
         }
       });
 
-      {%comment %}
       const hiddenInput = document.createElement('input');
       hiddenInput.type = 'hidden';
       hiddenInput.name = 'id';
@@ -343,7 +342,6 @@
       console.log(firstVariant,"firstVariant")
       if (firstVariant) hiddenInput.value = firstVariant.id;
       dom.popupVariants.appendChild(hiddenInput);
-      {% endcomment %}
     }
 
     function updateVariant() {
@@ -373,19 +371,21 @@
       const variant = getSelectedVariant(product);
       const input = document.getElementById(`variant-id-${sectionId}`);
 
-      dom.popupPrice.textContent = Shopify.formatMoney(variant.price,Shopify.money_format);
-      console.log('Selected variant:', variant);
-      input.value = variant.id;
-      dom.popupImage.src = variant?.featured_image?.src || product.featured_image;
-      if (variant.available) {
-        dom.addToCartButton.disabled = false;
-        dom.buttonText.textContent = settings.addToCartText;
-        input.value = '';
-      } else {
-        dom.addToCartButton.disabled = true;
-        dom.buttonText.textContent = "Sold out";
-        {% comment %} dom.popupPrice.textContent = 'Unavailable'; {% endcomment %}
-      }
+      setTimeout(() => {
+        dom.popupPrice.textContent = Shopify.formatMoney(variant.price,Shopify.money_format);
+        console.log('Selected variant:', variant);
+        input.value = variant.id;
+        dom.popupImage.src = variant?.featured_image?.src || product.featured_image;
+        if (variant.available) {
+          dom.addToCartButton.disabled = false;
+          dom.buttonText.textContent = settings.addToCartText;
+          input.value = '';
+        } else {
+          dom.addToCartButton.disabled = true;
+          dom.buttonText.textContent = "Sold out";
+          {% comment %} dom.popupPrice.textContent = 'Unavailable'; {% endcomment %}
+        }
+      }, 500);
     }
 
     function getSelectedVariant(product) {
