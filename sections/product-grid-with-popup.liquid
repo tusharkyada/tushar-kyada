@@ -252,12 +252,13 @@
       const variant = getSelectedVariant(product);
       const input = document.getElementById(`variant-id-${sectionId}`);
 
+      dom.popupPrice.textContent = Shopify.formatMoney(variant.price,Shopify.money_format);
+      
       if (variant) {
         input.value = variant.id;
-        dom.popupPrice.textContent = variant.price;
       } else {
         input.value = '';
-        dom.popupPrice.textContent = 'Unavailable';
+        {% comment %} dom.popupPrice.textContent = 'Unavailable'; {% endcomment %}
       }
     }
 

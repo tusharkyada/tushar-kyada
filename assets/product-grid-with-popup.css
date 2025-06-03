@@ -104,17 +104,17 @@
 }
 
 .product-grid-popup-container .popup-content {
-    position: relative;
-    width: 90%;
-    max-width: 360px;
-    max-height: 90vh;
-    overflow-y: auto;
-    background-color: #fff;
-    padding: 20px;
-    padding-top: 40px;
-    box-shadow: 0 5px 30px #0003;
-    transform: translateY(20px);
-    transition: transform .3s ease;
+  position: relative;
+  width: 90%;
+  max-width: 360px;
+  max-height: 90vh;
+  overflow-y: auto;
+  background-color: #fff;
+  padding: 20px;
+  padding-top: 40px;
+  box-shadow: 0 5px 30px #0003;
+  transform: translateY(20px);
+  transition: transform 0.3s ease;
 }
 
 .product-grid-popup-container .product-popup.active .popup-content {
@@ -125,13 +125,14 @@
   position: absolute;
   top: 15px;
   right: 15px;
-  width: 30px;
-  height: 30px;
+  width: 15px;
+  height: 15px;
   background: none;
   border: none;
   cursor: pointer;
-  color: #000000;
-  font-size: 24px;
+  color: #000;
+  font-weight: 600;
+  font-size: 15px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -139,23 +140,17 @@
 }
 
 .product-grid-popup-container .popup-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 8px;
-    align-items: start;
-}
-
-@media screen and (max-width: 749px) {
-  .product-grid-popup-container .popup-grid {
-    grid-template-columns: 1fr;
-  }
+  display: grid;
+  grid-template-columns: 1fr 1.3fr;
+  gap: 8px;
+  align-items: start;
 }
 
 .product-grid-popup-container .popup-image-wrapper {
-    position: relative;
-    padding-bottom: 120%;
-    overflow: hidden;
-    border-radius: 8px;
+  position: relative;
+  padding-bottom: 120%;
+  overflow: hidden;
+  border-radius: 8px;
 }
 
 .product-grid-popup-container .popup-image {
@@ -213,16 +208,16 @@
 }
 
 .product-grid-popup-container .add-to-cart {
-  padding: 12px 24px;
   background-color: var(--bg-color);
   color: var(--text-color);
   border: none;
-  border-radius: 4px;
   font-size: 16px;
   font-weight: 500;
   cursor: pointer;
   transition: background-color 0.3s ease;
   margin-top: 15px;
+  width: 100%;
+  padding: 15px 60px 15px 15px;
 }
 
 .product-grid-popup-container .loading {
