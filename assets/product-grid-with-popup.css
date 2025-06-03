@@ -245,7 +245,9 @@
   border-top-color: #fff;
   animation: spin 0.8s linear infinite;
 }
-
+.product-grid-popup-container .add-to-cart.loading-btn {
+  padding: 15px;
+}
 .product-grid-popup-container .add-to-cart.loading-btn span.loading {
   display: inline-block;
 }
@@ -382,5 +384,8 @@
   .product-grid-popup-container .product-icon {
     width: 16px;
     height: 16px;
+  }
+  .product-grid-popup-container .product-grid-header {
+    text-align: center;
   }
 }
