@@ -364,6 +364,7 @@
     async function addToCart(e) {
       e.preventDefault();
 
+      var thiscart = document.querySelector('cart-notification') || document.querySelector('cart-drawer');
       const product = products[currentProductIndex];
       if (!product) return;
 
@@ -382,12 +383,19 @@
       dom.successMessage.style.display = 'none';
 
       const items = [{ id: variantId, quantity: 1 }];
+      const formData = new FormData();
+      formData.append('id', variantId);
+      formData.append('quantity', 1);
+
+      // Add sections
+      formData.append('sections',window.cart.getSectionsToRender().map((section) => section.id).join(','));
+      formData.append('sections_url', window.location.pathname);
 
       try {
         const res = await fetch('/cart/add.js', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ items })
+          body: formData
         });
 
         const data = await res.json();
@@ -403,8 +411,6 @@
           dom.successMessage.style.display = 'none';
         }, 2000);
 
-
-        console.log("data", data);
 
         var cart = document.querySelector('cart-notification') || document.querySelector('cart-drawer');
         CartPerformance.measure("add:paint-updated-sections", () => {
