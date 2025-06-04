@@ -445,13 +445,13 @@
 
         setTimeout(() => {
           dom.successMessage.style.display = 'none';
-        }, 2000);
-
-        closePopup();
-        var cart = document.querySelector('cart-notification') || document.querySelector('cart-drawer');
-        CartPerformance.measure("add:paint-updated-sections", () => {
-          cart.renderContents(data);
-        });
+          
+          closePopup();
+          var cart = document.querySelector('cart-notification') || document.querySelector('cart-drawer');
+          CartPerformance.measure("add:paint-updated-sections", () => {
+            cart.renderContents(data);
+          });
+        }, 1000);
 
       } catch (error) {
         dom.addToCartButton.classList.remove("loading-btn");
