@@ -339,7 +339,6 @@
       hiddenInput.name = 'id';
       hiddenInput.id = `variant-id-${sectionId}`;
       const firstVariant = getSelectedVariant(products[currentProductIndex]);
-      console.log(firstVariant,"firstVariant")
       if (firstVariant) hiddenInput.value = firstVariant.id;
       dom.popupVariants.appendChild(hiddenInput);
     }
@@ -347,9 +346,6 @@
     function updateVariant() {
       const product = products[currentProductIndex];
       if (!product) return;
-
-      console.log(currentVariants,"currentVariants")
-
       const selects = dom.popupVariants.querySelectorAll('select');
       selects.forEach((select, i) => {
         currentVariants[`option${i + 1}`] = select.value;
@@ -360,7 +356,6 @@
       selectValueSet.forEach(select => {
         const optionKey = select.getAttribute('name');
         if (optionKey && currentVariants[optionKey]) {
-          console.log(currentVariants[optionKey]);
           select.value = currentVariants[optionKey];
           const changeEvent = new Event('change', { bubbles: true });
           select.dispatchEvent(changeEvent);
@@ -372,7 +367,6 @@
       const input = document.getElementById(`variant-id-${sectionId}`);
 
       dom.popupPrice.textContent = Shopify.formatMoney(variant.price,Shopify.money_format);
-      console.log('Selected variant:', variant,variant.id,input);
       input.value = variant.id;
       dom.popupImage.src = variant?.featured_image?.src || product.featured_image;
       if (variant.available) {
