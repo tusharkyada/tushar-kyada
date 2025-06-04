@@ -371,21 +371,18 @@
       const variant = getSelectedVariant(product);
       const input = document.getElementById(`variant-id-${sectionId}`);
 
-      setTimeout(() => {
-        dom.popupPrice.textContent = Shopify.formatMoney(variant.price,Shopify.money_format);
-        console.log('Selected variant:', variant);
-        input.value = variant.id;
-        dom.popupImage.src = variant?.featured_image?.src || product.featured_image;
-        if (variant.available) {
-          dom.addToCartButton.disabled = false;
-          dom.buttonText.textContent = settings.addToCartText;
-          input.value = '';
-        } else {
-          dom.addToCartButton.disabled = true;
-          dom.buttonText.textContent = "Sold out";
-          {% comment %} dom.popupPrice.textContent = 'Unavailable'; {% endcomment %}
-        }
-      }, 1500);
+      dom.popupPrice.textContent = Shopify.formatMoney(variant.price,Shopify.money_format);
+      console.log('Selected variant:', variant,variant.id,input);
+      input.value = variant.id;
+      dom.popupImage.src = variant?.featured_image?.src || product.featured_image;
+      if (variant.available) {
+        dom.addToCartButton.disabled = false;
+        dom.buttonText.textContent = settings.addToCartText;
+      } else {
+        dom.addToCartButton.disabled = true;
+        dom.buttonText.textContent = "Sold out";
+        {% comment %} dom.popupPrice.textContent = 'Unavailable'; {% endcomment %}
+      }
     }
 
     function getSelectedVariant(product) {
