@@ -437,14 +437,10 @@
         const data = await res.json();
         if (!res.ok) throw new Error(data.description || 'Error adding to cart');
 
-        dom.addToCartButton.disabled = false;
-        dom.addToCartButton.classList.remove("loading-btn");
-        dom.buttonText.textContent = 'Added to cart!';
-        dom.successMessage.textContent = 'Added to cart!';
-        dom.successMessage.style.display = 'block';
-
         setTimeout(() => {
-          dom.successMessage.style.display = 'none';
+          dom.addToCartButton.disabled = false;
+          dom.addToCartButton.classList.remove("loading-btn");
+          dom.buttonText.textContent = 'Added to cart!';
           
           closePopup();
           var cart = document.querySelector('cart-notification') || document.querySelector('cart-drawer');
